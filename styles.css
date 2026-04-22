@@ -1,0 +1,220 @@
+:root {
+    --bg-dark: #000000;
+    --bg-light: #5DE62C;
+
+    --text-dark: #ffffff;
+    --text-light: #000000;
+
+
+}
+
+/* Default = dark mode */
+body.dark {
+    --bg: var(--bg-dark);
+    --text: var(--text-dark);
+}
+
+/* Light mode */
+body.light {
+    --bg: var(--bg-light);
+    --text: var(--text-light);
+}
+
+body {
+    margin: 62px;
+    font-family: 'Inter';
+    background-color: var(--bg);
+    color: var(--text);
+}
+
+/*____________________________________________________________________________________________________
+
+/*                                        1. HEADER SECTION
+/*____________________________________________________________________________________________________
+
+/* Header Layout */
+.header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+
+    padding: 0;
+    gap: 20px;
+}
+
+/*==============================================================
+/*              1.A. ATRACE LOGO CONF AND SVG MERGING
+/*==============================================================*/
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-inner {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: nowrap;
+    /* prevents stacking */
+}
+
+.logo-inner svg {
+    display: block;
+    flex-shrink: 0;
+    /* Prevent shrinking */
+}
+
+/*==============================================================
+/*                      1.B. NAVIGATION
+/*==============================================================
+
+/* Navigation */
+.nav {
+    display: flex;
+    gap: 30px;
+}
+
+.nav a {
+    text-decoration: none;
+    font-size: 14px;
+    color: var(--text);
+    font-weight: 500;
+    transition: opacity 0.2s ease;
+
+
+}
+
+.nav a:hover {
+    color: #5DE62C;
+}
+
+/* Right side */
+.actions {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+}
+
+/*==============================================================
+/*                     1.C. SEARCH BAR
+/*==============================================================
+
+/* Search Container */
+.search-container {
+    position: relative;
+    width: 120px;
+    /* collapsed width */
+    transition: width 0.3s ease;
+}
+
+.search-container.active {
+    width: 220px;
+    /* expanded width */
+}
+
+/* Input */
+.search-box {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.search-box input {
+    width: 50%;
+    margin: 0 auto;
+    /* center it */
+    display: block;
+
+    background: transparent;
+    border: none;
+    outline: none;
+
+    color: var(--text);
+    font-size: 14px;
+    padding: 0;
+    padding-bottom: 3px;
+
+    text-align: center;
+    /* center placeholder */
+    transition: all 0.3s ease;
+}
+
+/* Placeholder style */
+.search-box input::placeholder {
+    color: var(--text);
+    opacity: 1;
+    font-size: 14px;
+}
+
+/* Underline (default) */
+.underline {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0%;
+    height: 1px;
+    background: var(--text);
+    transform: translateX(-50%);
+    transition: all 0.3s ease;
+}
+
+/* ACTIVE STATE */
+.search-container.active .search-box input {
+    width: 100%;
+    margin: 0;
+    text-align: left;
+    /* move text to left */
+}
+
+/* ACTIVE STATE */
+.search-container.active .underline {
+    width: 100%;
+    background: #5DE62C;
+}
+
+/* Icon (hidden initially) */
+.search-icon {
+    position: absolute;
+    right: 0;
+    opacity: 0;
+    transform: translateX(10px);
+    transition: all 0.3s ease;
+    color: var(--text);
+}
+
+.search-box button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.search-icon svg {
+    width: 18px;
+    height: 18px;
+}
+
+
+.search-container.active .search-icon {
+    opacity: 1;
+    transform: translateX(0);
+    color: #5DE62C;
+}
+
+
+
+
+/*==============================================================
+/*                     1.D.  SIGNIN/REGISTER
+/*==============================================================*/
+.auth a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 500;
+    font-size: 14px;
+}
+
+/*____________________________________________________________________________________________________
+
+/*                                     1.END OF HEADER SECTION
+/*____________________________________________________________________________________________________
