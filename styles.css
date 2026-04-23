@@ -85,7 +85,7 @@ body {
     text-decoration: none;
     font-size: var(--text-header-size);
     color: var(--text);
-  
+  font-weight: 300;
     transition: opacity 0.2s ease;
 
 
@@ -139,6 +139,7 @@ body {
 
     color: var(--text);
     font-size: var(--text-header-size);
+    font-weight: 300;
     padding: 0;
     padding-bottom: 3px;
 
@@ -152,6 +153,7 @@ body {
     color: var(--text);
     opacity: 1;
     font-size: var(--text-header-size);
+    font-weight: 300;
 }
 
 /* Underline (default) */
@@ -217,7 +219,7 @@ body {
 .auth a {
     text-decoration: none;
     color: var(--text);
-    
+    font-weight: 300;
     font-size: var(--text-header-size);
 }
 
