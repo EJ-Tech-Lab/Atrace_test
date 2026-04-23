@@ -109,15 +109,16 @@ body {
 /* Search Container */
 .search-container {
     position: relative;
-    width: 120px;
+    width: 150px;
     /* collapsed width */
     transition: width 0.3s ease;
 }
 
+/*
 .search-container.active {
-    width: 220px;
-    /* expanded width */
-}
+    width: 150px;
+     expanded width 
+}*/
 
 /* Input */
 .search-box {
