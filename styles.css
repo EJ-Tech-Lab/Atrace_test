@@ -505,7 +505,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--text);
+
     transition: all 0.2s;
 }
 
@@ -523,7 +523,7 @@ body {
 .play-btn {
     width: 80px;
     height: 80px;
-    background: #5DE62C;
+    background-color: transparent;
     border-radius: 50%;
     opacity: 0;
     transform: scale(0.5);
@@ -533,7 +533,7 @@ body {
 .play-btn svg {
     width: 35px;
     height: 35px;
-    fill: #000;
+
     margin-left: 5px;
     /* Centers the triangle */
 }
@@ -558,7 +558,7 @@ body {
 
 /* Top Right Text */
 .hero-corner.top-right {
-    top: 10px;
+    top: 40px;
     right: 40px;
     /* Aligns perfectly with your body padding */
     text-align: right;
@@ -566,16 +566,16 @@ body {
 
 .hero-corner.top-right p {
     margin: 0;
-    font-size: var(--text-header-size);
-    font-weight: 300;
-    color: #5DE62C;
-    opacity: 0.6;
+    font-size: 25;
+    font-weight: 400;
+    color: #000000;
+    opacity: 1;
     line-height: 1.5;
 }
 
 /* Bottom Left Links */
 .hero-corner.bottom-left {
-    bottom: 20px;
+    bottom: 40px;
     left: 40px;
     /* Aligns perfectly with your body padding */
     display: flex;
@@ -584,8 +584,8 @@ body {
 
 .hero-corner.bottom-left a {
     text-decoration: none;
-    font-size: var(--text-header-size);
-    color: #5DE62C;
+    font-size: 18;
+    color: #000000;
     font-weight: 300;
     transition: color 0.2s ease;
 }
@@ -596,7 +596,7 @@ body {
 
 /* Bottom Right Button */
 .hero-corner.bottom-right {
-    bottom: 10px;
+    bottom: 40px;
     right: 40px;
 }
 
@@ -607,7 +607,7 @@ body {
     color: var(--text);
     padding: 10px 24px;
     border-radius: 30px;
-    font-size: var(--text-header-size);
+    font-size: 18;
     font-weight: 300;
     cursor: pointer;
     text-transform: uppercase;
