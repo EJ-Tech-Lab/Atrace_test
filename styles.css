@@ -345,7 +345,7 @@ body {
     position: relative;
     background-color: #F5FFED;
 
-    width: 100vw;
+    width: calc(100% + 80px);
     height: 650px;
     margin-left: -40px;
     /* Offset the 40px body padding so it bleeds to the screen edges */
