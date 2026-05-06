@@ -268,6 +268,7 @@ body {
 .info-section {
     width: 100%;
     margin-top: 40px;
+    margin-bottom: 40px;
     /* space from previous section */
 }
 
@@ -336,4 +337,286 @@ body {
     background: #5DE62C;
     color: #000;
     border-color: #5DE62C;
+}
+
+/*============================================================*/
+/* --- CAROUSEL STYLES --- */
+.hero-carousel-section {
+    position: relative;
+    background-color: #F5FFED;
+
+    width: 100vw;
+    height: 650px;
+    margin-left: -40px;
+    /* Offset the 40px body padding so it bleeds to the screen edges */
+    overflow: hidden;
+    /* Hide anything outside the screen bounds */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-item {
+    position: absolute;
+    top: 40%;
+    /* Adjust vertical alignment of the circles */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    /* Smooth spring-like animation */
+}
+
+/* The base shape */
+.media-circle {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #5DE62C, #35C800);
+    /* Base look */
+
+    /* Theme accent */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* --- THE POSITIONS LOGIC --- */
+/* Center (Active) */
+.pos-center {
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    z-index: 5;
+    opacity: 1;
+}
+
+/* Middle Left/Right */
+.pos-left-1 {
+    left: 25%;
+    transform: translate(-50%, -50%) scale(0.7);
+    z-index: 4;
+    opacity: 0.8;
+}
+
+.pos-right-1 {
+    left: 75%;
+    transform: translate(-50%, -50%) scale(0.7);
+    z-index: 4;
+    opacity: 0.8;
+}
+
+/* Far Left/Right (Exactly 50% cut off by screen edge) */
+.pos-left-2 {
+    left: 0%;
+    transform: translate(-50%, -50%) scale(0.45);
+    z-index: 3;
+    opacity: 0.3;
+}
+
+.pos-right-2 {
+    left: 100%;
+    transform: translate(-50%, -50%) scale(0.45);
+    z-index: 3;
+    opacity: 0.3;
+}
+
+/* Hidden Items (waiting in the wings) */
+.pos-hidden-left {
+    left: -20%;
+    transform: translate(-50%, -50%) scale(0.2);
+    z-index: 1;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.pos-hidden-right {
+    left: 120%;
+    transform: translate(-50%, -50%) scale(0.2);
+    z-index: 1;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* --- TEXT & BUTTONS --- */
+.media-info {
+    position: absolute;
+    top: 100%;
+    /* Sits underneath the circle */
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 20px;
+    width: 450px;
+    /* Fixed width prevents jumping */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+/* Only show text and play button on the active center item */
+.pos-center .media-info {
+    opacity: 1;
+    pointer-events: auto;
+    transition-delay: 0.2s;
+    /* Reveal slightly after moving */
+}
+
+.media-title {
+    font-size: 18px;
+    font-weight: 400;
+    margin: 0 0 15px 0;
+    color: #000000;
+    text-transform: uppercase;
+}
+
+.media-desc-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.media-desc {
+    flex: 1;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 300;
+    color: #000000;
+    margin: 0 15px;
+    line-height: 1.5;
+}
+
+/* Play and Nav Buttons */
+.nav-btn,
+.play-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text);
+    transition: all 0.2s;
+}
+
+.nav-btn svg {
+    width: 30px;
+    height: 30px;
+    fill: #5DE62C;
+    transition: fill 0.2s;
+}
+
+.nav-btn:hover svg {
+    fill: #5DE62C;
+}
+
+.play-btn {
+    width: 80px;
+    height: 80px;
+    background: #5DE62C;
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.play-btn svg {
+    width: 35px;
+    height: 35px;
+    fill: #000;
+    margin-left: 5px;
+    /* Centers the triangle */
+}
+
+.pos-center .play-btn {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.pos-center .play-btn:hover {
+    transform: scale(1.1);
+}
+
+/* --- NEW CORNER ELEMENTS --- */
+
+/* Base setup for all corners */
+.hero-corner {
+    position: absolute;
+    z-index: 20;
+    /* Ensures they sit above the sliding carousel items */
+}
+
+/* Top Right Text */
+.hero-corner.top-right {
+    top: 10px;
+    right: 40px;
+    /* Aligns perfectly with your body padding */
+    text-align: right;
+}
+
+.hero-corner.top-right p {
+    margin: 0;
+    font-size: var(--text-header-size);
+    font-weight: 300;
+    color: #5DE62C;
+    opacity: 0.6;
+    line-height: 1.5;
+}
+
+/* Bottom Left Links */
+.hero-corner.bottom-left {
+    bottom: 20px;
+    left: 40px;
+    /* Aligns perfectly with your body padding */
+    display: flex;
+    gap: 30px;
+}
+
+.hero-corner.bottom-left a {
+    text-decoration: none;
+    font-size: var(--text-header-size);
+    color: #5DE62C;
+    font-weight: 300;
+    transition: color 0.2s ease;
+}
+
+.hero-corner.bottom-left a:hover {
+    color: #5DE62C;
+}
+
+/* Bottom Right Button */
+.hero-corner.bottom-right {
+    bottom: 10px;
+    right: 40px;
+}
+
+.corner-btn {
+    background: #5DE62C;
+    border: 1px solid var(--text);
+    /* Uses your text color variable */
+    color: var(--text);
+    padding: 10px 24px;
+    border-radius: 30px;
+    font-size: var(--text-header-size);
+    font-weight: 300;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.corner-btn:hover {
+    background: var(--text);
+    color: var(--bg);
+    /* Inverts colors on hover */
+    border-color: var(--text);
 }
