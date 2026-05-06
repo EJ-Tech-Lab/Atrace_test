@@ -24,10 +24,14 @@ body.light {
 }
 
 body {
-    margin: 40px;
+    margin: 0;
+    padding: 40px;
     font-family: 'Inter';
     background-color: var(--bg);
     color: var(--text);
+    display: flex;
+    flex-direction: column;
+
 }
 
 /*____________________________________________________________________________________________________
@@ -40,7 +44,7 @@ body {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
-
+    margin-bottom: 40px;
     padding: 0;
     gap: 20px;
 }
@@ -227,4 +231,109 @@ body {
 /*____________________________________________________________________________________________________
 
 /*                                     1.END OF HEADER SECTION
-/*____________________________________________________________________________________________________
+/*____________________________________________________________________________________________________*/
+.hero-grid {
+    flex: 1;
+
+}
+
+.grid {
+    display: grid;
+    width: 100%;
+    height: 100%;
+
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto auto;
+
+    column-gap: 24px;
+    /* horizontal spacing */
+    row-gap: 0px;
+    /* 👈 reduce vertical gap here */
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* keeps proportions */
+}
+
+/*===============================================================================*/
+.info-section {
+    width: 100%;
+    margin-top: 40px;
+    /* space from previous section */
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.info-section {
+    width: 100%;
+    margin-top: 40px;
+    /* space from previous section */
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-item.left p {
+    font-size: 45px;
+    font-weight: 500;
+    /*line-height: 1.4;*/
+}
+
+.info-item.right p {
+    font-size: 25px;
+    font-weight: 300;
+    margin-bottom: 24px
+}
+
+
+.info-item.left,
+.info-item.right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* 👈 KEY */
+}
+
+.info-btn {
+    margin-top: 0;
+    width: 100%;
+    padding: 12px 0;
+
+    background: #5DE62C;
+
+    color: var(--text);
+    border-radius: 30px;
+
+    font-size: 26px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.info-btn:hover {
+    background: #5DE62C;
+    color: #000;
+    border-color: #5DE62C;
+}
