@@ -235,6 +235,7 @@ body {
 .hero-grid {
     flex: 1;
 
+
 }
 
 .grid {
@@ -619,4 +620,313 @@ body {
     color: var(--bg);
     /* Inverts colors on hover */
     border-color: var(--text);
+}
+
+/*=============================================================
+===============================================================
+                            artists page
+===============================================================
+===============================================================*/
+.artist-hero {
+    position: relative;
+
+    width: calc(100% + 80px);
+    margin-left: -40px;
+
+    overflow: hidden;
+}
+
+.artist-bg {
+    width: 100%;
+    height: 100vh;
+
+    object-fit: cover;
+    display: block;
+}
+
+.artist-overlay {
+    position: absolute;
+    inset: 0;
+
+    padding: 40px;
+
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 125px;
+}
+
+.art-info-grid {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 24px;
+}
+
+
+.art-info-item.left,
+.art-info-item.right {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.art-info-item.left {
+    overflow: visible;
+}
+
+.artist-name,
+.artist-title {
+    margin: 0;
+    line-height: 1;
+}
+
+.artist-name {
+    font-size: 45px;
+    font-weight: 300;
+
+}
+
+.artist-title {
+    font-size: 45px;
+    font-weight: 500;
+    white-space: nowrap;
+
+
+}
+
+
+
+.art-info-item.right p {
+    font-size: 25px;
+    font-weight: 300;
+    line-height: 1.3;
+
+    margin-bottom: 24px;
+}
+
+.art-info-btn {
+    width: 100%;
+
+    padding: 14px 0;
+
+    background: transparent;
+    border: 3px solid #5DE62C;
+
+    color: var(--text);
+
+    border-radius: 0;
+
+    font-size: 24px;
+    font-weight: 400;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+/*----------------------------------------------------*/
+.artist-life-section {
+    margin-top: 80px;
+}
+
+.life-section-heading {
+    margin-bottom: 60px;
+}
+
+.life-artist-name,
+.life-artist-title {
+    margin: 0;
+    line-height: 1;
+}
+
+.life-artist-name {
+    font-size: 45px;
+    font-weight: 300;
+}
+
+.life-artist-title {
+    font-size: 45px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.life-content-grid {
+    display: grid;
+
+    grid-template-columns: 420px 420px;
+
+    column-gap: 160px;
+
+    justify-content: start;
+
+    margin-bottom: 60px;
+}
+
+.life-content-item p {
+    margin: 0;
+
+    font-size: 25px;
+    font-weight: 300;
+    line-height: 1;
+
+    text-align: left;
+}
+
+.life-section-links {
+    display: flex;
+    gap: 40px;
+}
+
+.life-section-links button {
+    background: transparent;
+    border: none;
+
+    padding: 0;
+
+    color: var(--text);
+
+    font-size: 16px;
+    font-weight: 300;
+
+    cursor: pointer;
+
+    transition: opacity 0.2s ease;
+}
+
+.life-section-links button:hover {
+    opacity: 0.5;
+}
+
+/*-------------------------------------------------------*/
+.artist-work {
+    position: relative;
+
+    width: calc(100% + 80px);
+    margin-left: -40px;
+    margin-top: 60px;
+    overflow: hidden;
+}
+
+.artistwork-bg {
+    width: 100%;
+    height: 100vh;
+
+    object-fit: cover;
+    display: block;
+}
+
+.artistwork-overlay {
+    position: absolute;
+    inset: 0;
+
+    padding: 40px;
+
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 70px;
+}
+
+.work-info-grid {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 24px;
+}
+
+
+.work-info-item.left,
+.work-info-item.right {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.work-info-item.left {
+    overflow: visible;
+}
+
+.artistwork-name,
+.artistwork-title {
+    margin: 0;
+    line-height: 1;
+}
+
+.artistwork-name {
+    font-size: 45px;
+    font-weight: 300;
+    white-space: nowrap;
+}
+
+.artistwork-title {
+    font-size: 45px;
+    font-weight: 500;
+    white-space: nowrap;
+
+
+}
+
+/*-==================================================*/
+.artistwork-info-section {
+    margin-top: 80px;
+}
+
+.life-info-grid {
+    display: grid;
+
+    grid-template-columns: 420px 420px;
+
+    column-gap: 160px;
+
+    justify-content: start;
+
+    margin-bottom: 60px;
+}
+
+.life-info-item p {
+    margin: 0;
+
+    font-size: 25px;
+    font-weight: 300;
+    line-height: 1;
+
+    text-align: left;
+}
+
+.gallery-section {
+    margin-top: 120px;
+}
+
+.gallery-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+
+    gap: 24px;
+}
+
+.gallery-item {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    /* keeps square cells */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+    background: transparent;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    /* 🔥 this prevents cropping */
+    display: block;
 }
