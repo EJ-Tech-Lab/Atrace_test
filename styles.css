@@ -232,6 +232,102 @@ body {
 
 /*                                     1.END OF HEADER SECTION
 /*____________________________________________________________________________________________________*/
+/*____________________________________________________________________________________________________
+
+/*                                        2 FOOTER SECTION
+/*____________________________________________________________________________________________________*/
+
+.footer {
+    margin-top: 120px;
+    margin-bottom: -40px;
+
+    background: #5DE62C;
+
+    margin-left: -40px;
+    margin-right: -40px;
+
+    padding: 60px 40px;
+
+    color: #000000;
+}
+
+.footer * {
+    min-width: 0;
+}
+
+.footer-grid {
+    display: grid;
+
+    grid-template-columns:
+        1.4fr 1fr 1fr 1fr;
+
+    gap: 60px;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-column h4 {
+    font-size: 14px;
+    font-weight: 600;
+
+    margin: 0 0 24px 0;
+
+    letter-spacing: 0.05em;
+}
+
+.footer-column a {
+    text-decoration: none;
+
+    color: #000000;
+
+    font-size: 14px;
+    font-weight: 400;
+
+    margin-bottom: 14px;
+
+    transition: opacity 0.2s ease;
+}
+
+.footer-column a:hover {
+    opacity: 0.6;
+}
+
+.brand-column {
+    justify-content: left;
+}
+
+.footer-logo {
+    margin-bottom: 20px;
+}
+
+.socials {
+    display: flex;
+    gap: 18px;
+}
+
+.socials a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+    height: 36px;
+
+    border: 0px;
+
+    transition: all 0.2s ease;
+}
+
+
+
+
+/*____________________________________________________________________________________________________
+
+/*                                        2. END OF FOOTER SECTION
+/*____________________________________________________________________________________________________*/
 .hero-grid {
     flex: 1;
 
