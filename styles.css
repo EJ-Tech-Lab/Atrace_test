@@ -232,6 +232,10 @@ body {
 
 /*                                     1.END OF HEADER SECTION
 /*____________________________________________________________________________________________________*/
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 /*____________________________________________________________________________________________________
 
 /*                                        2 FOOTER SECTION
@@ -327,6 +331,14 @@ body {
 /*____________________________________________________________________________________________________
 
 /*                                        2. END OF FOOTER SECTION
+/*____________________________________________________________________________________________________*/
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+/*____________________________________________________________________________________________________
+
+/*                                        3.      HOME PAGE
 /*____________________________________________________________________________________________________*/
 .hero-grid {
     flex: 1;
@@ -718,11 +730,19 @@ body {
     border-color: var(--text);
 }
 
-/*=============================================================
-===============================================================
-                            artists page
-===============================================================
-===============================================================*/
+/*____________________________________________________________________________________________________
+
+/*                                        3. END OF HOME PAGE
+/*____________________________________________________________________________________________________*/
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+/*____________________________________________________________________________________________________
+
+/*                                        4.  ARTISTS PAGE
+/*____________________________________________________________________________________________________*/
+
 .artist-hero {
     position: relative;
 
@@ -1023,6 +1043,325 @@ body {
     height: 100%;
 
     object-fit: contain;
-    /* 🔥 this prevents cropping */
+    /*  this prevents cropping */
     display: block;
+}
+
+/*____________________________________________________________________________________________________
+
+/*                                        4. END OF ARTISTS PAGE
+/*____________________________________________________________________________________________________*/
+/* --- EVENTS CALENDAR LAYOUT --- */
+.events-section {
+    width: 100%;
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+}
+
+.events-header {
+    font-size: 40px;
+    font-weight: 500;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+}
+
+/* --- FILTERS --- */
+.events-filters {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    /* Equal spacing between every element */
+    margin-bottom: 60px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 20px;
+}
+
+.filter-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    text-transform: uppercase;
+    margin-right: 10px;
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 16px;
+    /* Matching structural container alignment */
+}
+
+/* Enforced size parameters for clean row consistency */
+.custom-dropdown,
+.filter-btn {
+    width: 135px;
+    height: 30px;
+    box-sizing: border-box;
+}
+
+/* Sharp rectangular styling config */
+.filter-btn {
+    background: transparent;
+    border: 1px solid #5DE62C;
+    color: var(--text);
+    border-radius: 0;
+    /* Pure rectangle flat styling */
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    cursor: pointer;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: #5DE62C;
+    color: #000;
+    font-weight: 600;
+}
+
+/* --- CUSTOM OUTLINED DROPDOWN --- */
+.custom-dropdown {
+    position: relative;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    text-transform: uppercase;
+    user-select: none;
+}
+
+/* Container Box */
+.dropdown-trigger {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #5DE62C;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    padding: 0 45px 0 15px;
+    cursor: pointer;
+    box-sizing: border-box;
+    background: transparent;
+}
+
+/* Green arrow block remains exactly the same */
+.custom-dropdown::after {
+    content: "▼";
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 38px;
+    height: 100%;
+    background: #5DE62C;
+    color: #000;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+/* The actual Options Menu Menu */
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    /* Sits perfectly below the trigger box */
+    left: 0;
+    width: 100%;
+    background: #000000;
+    /* Pure black background on all devices */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* Light outline to separate it from your black site background */
+    display: none;
+    /* Hidden by default */
+    z-index: 100;
+    box-sizing: border-box;
+}
+
+/* Shows the menu when open */
+.custom-dropdown.open .dropdown-menu {
+    display: block;
+}
+
+/* Individual list options */
+.dropdown-option {
+    padding: 12px 15px;
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+}
+
+/* Highlighted state on hover */
+.dropdown-option:hover {
+    background: #111111;
+    /* Subtle dark dark grey */
+    color: #5DE62C;
+}
+
+/* Currently active option */
+.dropdown-option.active {
+    color: #5DE62C;
+    font-weight: 600;
+}
+
+/* --- CALENDAR GRID --- */
+.calendar-container {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    /* Space between different months */
+}
+
+/* 2-Column layout: Month on left, Events on right */
+.month-group {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.month-sidebar {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    transform: translateY(0);
+    transition: margin-top 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    /* Smooth tracking movement */
+}
+
+.date-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.date-year {
+    font-size: 45px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    opacity: 1;
+    margin-bottom: 2px;
+}
+
+.date-month {
+    font-size: 45px;
+    font-weight: 700;
+    /* Distinct bold emphasis formatting */
+    letter-spacing: 1px;
+    color: var(--text);
+}
+
+/* The actual events grid (3 items per row) */
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+/* --- INDIVIDUAL EVENT CARD --- */
+.event-card {
+    display: flex;
+    /* Puts the line and content side-by-side */
+    gap: 15px;
+    height: 100%;
+    /* Ensures it fills the grid row height */
+    transition: transform 0.3s ease;
+}
+
+.event-card:hover .event-line {
+    background-color: #5DE62C;
+    opacity: 1;
+}
+
+/* The vertical line */
+.event-line {
+    width: 2px;
+    background-color: #5DE62C;
+    opacity: 0.5;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+/* Content Stack */
+.event-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Typography inside the card */
+.e-days {
+    font-size: 14px;
+    font-weight: 300;
+    opacity: 0.6;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.e-date {
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: 20px;
+}
+
+.e-type {
+    font-size: 14px;
+    color: #5DE62C;
+    text-transform: uppercase;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+
+/* Image - Update this to a real <img> tag when you have photos */
+/* --- REAL EVENT IMAGES --- */
+.e-image {
+    width: 100%;
+    height: 180px;
+    /* Forces all images to be the exact same height */
+    object-fit: cover;
+    /* THE MAGIC TRICK: Zooms/crops the image to fit the box so it never looks stretched */
+    object-position: center;
+    /* Keeps the subject centered during the crop */
+    margin-bottom: 20px;
+    display: block;
+
+
+    opacity: 0.8;
+    transition: all 0.4s ease;
+}
+
+/* Brings the color and brightness back when you hover over the event */
+.event-card:hover .e-image {
+
+    opacity: 1;
+}
+
+.e-artist {
+    font-size: 14px;
+    font-weight: 300;
+    opacity: 1;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.e-name {
+    font-size: 32px;
+    font-weight: 500;
+    margin: 0 0 30px 0;
+}
+
+.e-caption {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.5;
+    opacity: 0.8;
+    margin: 0;
 }
