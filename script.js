@@ -62,3 +62,129 @@ document.addEventListener("DOMContentLoaded", () => {
     // Fire on load
     updateCarousel();
 });
+document.addEventListener("DOMContentLoaded", () => {
+    const categoryButtons = document.querySelectorAll(".filter-btn");
+    const monthGroups = document.querySelectorAll(".month-group");
+
+    // Custom Dropdown Elements
+    const dropdown = document.getElementById("monthDropdown");
+    const dropdownTrigger = dropdown.querySelector(".dropdown-trigger");
+    const dropdownOptions = dropdown.querySelectorAll(".dropdown-option");
+
+    let activeMonth = "all";
+    let activeCategory = "all";
+
+    // Dynamic layout calculation for the sidebars
+    function positionSidebars() {
+        requestAnimationFrame(() => {
+            monthGroups.forEach(group => {
+                if (group.style.display === "none") return;
+
+                const grid = group.querySelector(".events-grid");
+                const sidebar = group.querySelector(".month-sidebar");
+                if (!grid || !sidebar) return;
+
+                const visibleCards = Array.from(grid.querySelectorAll(".event-card")).filter(
+                    card => card.style.display !== "none"
+                );
+
+                if (visibleCards.length === 0) return;
+
+                sidebar.style.marginTop = "0px";
+
+                let firstRowMaxHeight = 0;
+                const itemsInFirstRow = Math.min(visibleCards.length, 3);
+
+                for (let i = 0; i < itemsInFirstRow; i++) {
+                    const cardHeight = visibleCards[i].offsetHeight;
+                    if (cardHeight > firstRowMaxHeight) {
+                        firstRowMaxHeight = cardHeight;
+                    }
+                }
+
+                const sidebarHeight = sidebar.offsetHeight;
+                const targetOffset = (firstRowMaxHeight - sidebarHeight) / 2;
+
+                sidebar.style.marginTop = `${Math.max(0, targetOffset)}px`;
+            });
+        });
+    }
+
+    // Core Filter Logic
+    function applyFilters() {
+        monthGroups.forEach(group => {
+            const groupMonth = group.getAttribute("data-month");
+            let hasVisibleEvents = false;
+            const events = group.querySelectorAll(".event-card");
+
+            events.forEach(event => {
+                const eventCategory = event.getAttribute("data-category");
+                const matchesMonth = activeMonth === "all" || groupMonth === activeMonth;
+                const matchesCategory = activeCategory === "all" || eventCategory === activeCategory;
+
+                if (matchesMonth && matchesCategory) {
+                    event.style.display = "flex";
+                    hasVisibleEvents = true;
+                } else {
+                    event.style.display = "none";
+                }
+            });
+
+            if (hasVisibleEvents) {
+                group.style.display = "grid";
+            } else {
+                group.style.display = "none";
+            }
+        });
+
+        positionSidebars();
+    }
+
+    // --- CUSTOM DROPDOWN INTERACTION LOGIC ---
+
+    // Toggle menu open/close
+    dropdownTrigger.addEventListener("click", (e) => {
+        e.stopPropagation(); // Prevents instant closing from document click listener
+        dropdown.classList.toggle("open");
+    });
+
+    // Option selection interaction
+    dropdownOptions.forEach(option => {
+        option.addEventListener("click", () => {
+            // Remove active status from options, add to clicked option
+            dropdownOptions.forEach(opt => opt.classList.remove("active"));
+            option.classList.add("active");
+
+            // Update main view text window and active system filters
+            dropdownTrigger.textContent = option.textContent;
+            activeMonth = option.getAttribute("data-value");
+
+            // Close panel and process filter updates
+            dropdown.classList.remove("open");
+            applyFilters();
+        });
+    });
+
+    // Close dropdown instantly if user clicks anywhere else on screen
+    document.addEventListener("click", (e) => {
+        if (!dropdown.contains(e.target)) {
+            dropdown.classList.remove("open");
+        }
+    });
+
+    // --- CATEGORY BUTTON INTERACTION LOGIC ---
+    categoryButtons.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            categoryButtons.forEach(b => b.classList.remove("active"));
+            e.target.classList.add("active");
+            activeCategory = e.target.getAttribute("data-filter");
+            applyFilters();
+        });
+    });
+
+    // Layout resizing tracker loops
+    window.addEventListener("resize", positionSidebars);
+
+    // Initial pass run engine initialization layout settings
+    applyFilters();
+});
