@@ -330,10 +330,6 @@ body {
 }
 
 
-
-
-
-
 /*____________________________________________________________________________________________________
 
 /*                                        2. END OF FOOTER SECTION
@@ -346,89 +342,106 @@ body {
 
 /*                                        3.      HOME PAGE
 /*____________________________________________________________________________________________________*/
-.hero-grid {
+/*==============================================================
+/*                     3.A. HOME SECTION
+/*==============================================================*/
+.home-section {
     position: relative;
     flex: 1;
-
-
 }
 
-.grid {
+/*==============================================================
+/*                  3.B. BACKGROUND ICONS GRID
+/*==============================================================*/
+.background-grid {
     display: grid;
     width: 100%;
     height: 100%;
-
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: auto auto;
-
     column-gap: 24px;
-    /* horizontal spacing */
     row-gap: 0px;
-    /* 👈 reduce vertical gap here */
 }
 
+/* GRID ITEMS */
 .item {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+/* THE SVG BACKGROUND ICONS */
 .item svg {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    /* keeps proportions */
+
 }
 
-.artist-overlay2 {
+/*==============================================================
+/*                3.C. HOME SECTION TEXT OVERLAY
+/*==============================================================*/
+.home-section-overlay {
     position: absolute;
     inset: 0;
-
-
-
     display: flex;
     align-items: flex-end;
-    padding-bottom: 0px;
+    padding-bottom: 100px;
 }
 
-.art-info-grid2 {
+.home-section-overlay-grid {
     width: 100%;
-
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-
     gap: 24px;
 }
 
 
-.art-info-item2.left,
-.art-info-item2.right {
+.home-section-overlay-grid-item.left,
+.home-section-overlay-grid-item.right {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
 }
 
-.art-info-item2.left {
+.home-section-overlay-grid-item.left {
     overflow: visible;
+    padding-top: 19px;
 }
 
+.home-section-overlay-quote-part-1,
+.home-section-overlay-quote-part-2 {
+    margin: 0;
+    line-height: 1.2;
+}
 
+/* TWO ARTISTS */
+.home-section-overlay-quote-part-1 {
+    font-size: 65px;
+    font-weight: 300;
+}
 
+/* "ONE SHARED TRACE" */
+.home-section-overlay-quote-part-2 {
+    font-size: 65px;
+    font-weight: 500;
+    white-space: nowrap;
+}
 
-
-.art-info-item2.right p {
+/* WEBSITE INTRODUCTION PARAGRAPH */
+.home-section-overlay-grid-item.right p {
     font-size: 25px;
     font-weight: 300;
     line-height: 1.3;
-
     margin-bottom: 24px;
 }
 
-.art-info-btn2 {
+/* VISIT EVENTS BUTTON */
+.home-section-overlay-grid-btn {
     width: 100%;
 
     padding: 14px 0;
-
+    text-align: center;
     background: transparent;
     border: 2px solid #5DE62C;
 
@@ -440,61 +453,183 @@ body {
     font-weight: 400;
 
     cursor: pointer;
-
+    text-decoration: none;
+    /* Removes the default link underline */
+    color: inherit;
+    /* Prevents the text from turning standard link blue */
     transition: all 0.3s ease;
 }
 
-.art-info-btn2:hover {
+.home-section-overlay-grid-btn:hover {
     background: #5DE62C;
 }
 
-
-/*===============================================================================*/
-.info-section {
+/*==============================================================
+/*                     3.D. ABOUT TRACE SECTION
+/*==============================================================*/
+.about-section {
     width: 100%;
-    margin-top: 150px;
+    margin-top: 50px;
     margin-bottom: 150px;
-    /* space from previous section */
 }
 
-.info-grid {
+/* "ABOUT ATRACE" */
+.about-heading {
+    font-size: 45px;
+    font-weight: 300;
+    margin-bottom: 60px;
+    line-height: 1;
+}
+
+/* "ATRACE" ON ITS OWN */
+.about-heading span {
+    font-weight: 500;
+}
+
+.about-section-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+    gap: 310px;
 }
 
-
-.info-item {
+.about-section-grid-item {
     display: flex;
     flex-direction: column;
 }
 
-.info-item.left h2 {
-    font-size: 45px;
-    font-weight: 500;
-    line-height: 1.4;
-    margin: 0;
-}
-
-.info-item.right p {
+/* THE ABOUT PARAGRAPH */
+.about-text {
     font-size: 25px;
     font-weight: 300;
     margin-top: 13px;
-    margin-left: 20px;
+
 }
 
 
-.info-item.left,
-.info-item.right {
+.about-section-grid-item.left,
+.about-section-grid-item.right {
     display: flex;
     flex-direction: column;
     justify-content: start;
-    /* 👈 KEY */
+
 }
 
 
-/*============================================================*/
-/* --- CAROUSEL STYLES --- */
+/*==============================================================
+/*                     3.E. FUTURE EVENT SECTION
+/*==============================================================*/
+.future-event-section {
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 150px;
+}
+
+.future-event-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 60px;
+    align-items: start;
+}
+
+/* LEFT COLUMN (TEXT) */
+.future-event-item.left {
+    display: flex;
+    flex-direction: column;
+    padding-top: 0px;
+    padding-bottom: 80px;
+}
+
+/* "FUTURE EVENTS" HEADER */
+.future-event-section-heading {
+    margin-bottom: 150px;
+}
+
+/* EVENT NAME */
+.future-event-artist-name {
+    font-size: 45px;
+    font-weight: 300;
+    margin: 0;
+    line-height: 1;
+}
+
+/*ARTIST NAME */
+.future-event-artist-title {
+    font-size: 45px;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.future-event-artist p {
+    font-size: 35px;
+    font-weight: 100;
+    opacity: 0.6;
+    margin: 0 0 40px 0;
+
+}
+
+/* EVENT INFO PARAGRAPH */
+.future-event-content-item p {
+    margin: 0 0 150px 0;
+    font-size: 25px;
+    font-weight: 300;
+    line-height: 1.4;
+}
+
+/*==============================================================
+/*                3.F. FUTURE EVENT SECTION BUTTONS
+/*==============================================================*/
+.future-event-section-links {
+    display: flex;
+    gap: 40px;
+    margin-top: auto;
+}
+
+.future-event-section-links a {
+    background: transparent;
+    border: none;
+    padding: 0;
+    color: var(--text);
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    text-decoration: none;
+    /* Removes the default link underline */
+    color: inherit;
+    /* Prevents the text from turning standard link blue */
+}
+
+.future-event-section-links a:hover {
+    opacity: 0.5;
+}
+
+/*==============================================================
+/*                3.G. FUTURE EVENT IMAGE (POSTER/TICKET)
+/*==============================================================*/
+.future-event-item.right {
+    width: 100%;
+
+}
+
+.future-event-item.right img {
+
+
+    max-height: 800px;
+    width: auto;
+    max-width: 500%;
+
+
+    display: block;
+    margin-left: auto;
+}
+
+/*==============================================================
+/*                     3.H. CAROUSEL SECTION
+/*==============================================================*/
+
 .hero-carousel-section {
     position: relative;
     background-color: #F5FFED;
@@ -504,7 +639,6 @@ body {
     margin-left: -40px;
     /* Offset the 40px body padding so it bleeds to the screen edges */
     overflow: hidden;
-    /* Hide anything outside the screen bounds */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -521,16 +655,18 @@ body {
 .carousel-item {
     position: absolute;
     top: 40%;
-    /* Adjust vertical alignment of the circles */
     display: flex;
     flex-direction: column;
     align-items: center;
     transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-    /* Smooth spring-like animation */
 }
 
 
-/* --- THE POSITIONS LOGIC --- */
+
+/*==============================================================
+/*                     3.I. THE POSITIONS LOGIC
+/*==============================================================*/
+
 /* Center (Active) */
 .pos-center {
     left: 50%;
@@ -555,17 +691,17 @@ body {
 }
 
 
+/*==============================================================
+/*                     3.J. CAROUSEL TEXT & BUTTONS
+/*==============================================================*/
 
-/* --- TEXT & BUTTONS --- */
 .media-info {
     position: absolute;
     top: 100%;
-    /* Sits underneath the circle */
     left: 50%;
     transform: translateX(-50%);
     margin-top: 20px;
     width: 450px;
-    /* Fixed width prevents jumping */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -607,7 +743,10 @@ body {
     line-height: 1.5;
 }
 
-/* Play and Nav Buttons */
+/*==============================================================
+/*               3.K. CAROUSEL Play and Nav Buttons
+/*==============================================================*/
+
 .nav-btn,
 .play-btn {
     background: transparent;
@@ -631,8 +770,10 @@ body {
     fill: #5DE62C;
 }
 
+/*==============================================================
+/*                 3.L. CAROUSEL SVG BUTTON LOGIC
+/*==============================================================*/
 
-/* --- NEW CUSTOM SVG BUTTON LOGIC --- */
 .media-svg-btn {
     background: transparent;
     border: none;
@@ -644,12 +785,10 @@ body {
     justify-content: center;
     align-items: center;
     outline: none;
-
     /* Make un-centered items unclickable so they don't trigger actions accidentally */
     pointer-events: none;
 }
 
-/* Force the SVG to fit the 250x250 container */
 .media-svg-btn svg {
     width: 100%;
     height: 100%;
@@ -666,7 +805,9 @@ body {
     transform: scale(1.05);
 }
 
-/* --- NEW CORNER ELEMENTS --- */
+/*==============================================================
+/*                 3.M. CAROUSEL CORNER ELEMENTS
+/*==============================================================*/
 
 /* Base setup for all corners */
 .hero-corner {
@@ -675,8 +816,8 @@ body {
     /* Ensures they sit above the sliding carousel items */
 }
 
-/* Top Right Text */
-.hero-corner.top-right {
+/* Top left Text */
+.hero-corner.top-left {
     top: 40px;
     left: 40px;
     /* Aligns perfectly with your body padding */
@@ -714,69 +855,62 @@ body {
     color: #5DE62C;
 }
 
-/*--------------------*/
-.home-hero {
+/*==============================================================
+/*                     3.N. VIDEO EXAMPLE SECTION
+/*==============================================================*/
+.home-hero-section {
     position: relative;
-
     width: calc(100% + 80px);
     margin-left: -40px;
-
+    margin-top: 200px;
+    margin-bottom: 200px;
     overflow: hidden;
 }
 
-.home-bg {
+.home-hero-section-bg {
     width: 100%;
     height: 100vh;
-
     object-fit: cover;
     display: block;
 }
 
-.home-artist-overlay {
+.home-hero-section-overlay {
     position: absolute;
     inset: 0;
-
     padding: 40px;
-
     display: flex;
     align-items: flex-end;
     padding-bottom: 30px;
 }
 
 
-.home-art-info-grid {
+.home-hero-section-overlay-grid {
     width: 100%;
-
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-
     gap: 24px;
 }
 
 
-.home-art-info-item.left {
+.home-hero-section-overlay-grid-item.left {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-}
-
-.home-art-info-item.left {
     overflow: visible;
 }
 
-.home-artist-name,
-.home-artist-title {
+.home-artist-quote-part-1,
+.home-artist-quote-part-2 {
     margin: 0;
     line-height: 1;
 }
 
-.home-artist-name {
+.home-artist-quote-part-1 {
     font-size: 45px;
     font-weight: 100;
-
 }
 
-.home-artist-title {
+.home-artist-quote-part-2 {
     font-size: 45px;
     font-weight: 700;
     white-space: nowrap;
@@ -784,7 +918,26 @@ body {
 
 }
 
+.home-hero-section-play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 5;
+    transition: transform 0.3s ease;
+}
 
+.home-hero-section-play-btn:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.home-hero-section-play-btn svg {
+    display: block;
+}
 
 
 /*____________________________________________________________________________________________________
@@ -793,56 +946,246 @@ body {
 /*____________________________________________________________________________________________________*/
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+/*____________________________________________________________________________________________________
+
+/*                                        4. ARTISTS MAIN PAGE
+/*____________________________________________________________________________________________________*/
+
+/*==============================================================
+/*              4.A.  ARTISTS LIST SECTION
+/*==============================================================*/
+.artists-section {
+    width: 100%;
+    margin-top: 80px;
+    margin-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+/*==============================================================
+/*              4.B.  "OUR ARTISTS" HEADER
+/*==============================================================*/
+.artists-header {
+    font-size: 40px;
+    font-weight: 500;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+}
+
+/*==============================================================
+/*                        4.C.  FILTER
+/*==============================================================*/
+.artists-filters {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 60px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 20px;
+}
+
+.filter-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    text-transform: uppercase;
+    margin-right: 10px;
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+
+}
+
+.filter-btn {
+    width: 135px;
+    height: 30px;
+    box-sizing: border-box;
+    background: transparent;
+    border: 1px solid #5DE62C;
+    color: var(--text);
+    border-radius: 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    cursor: pointer;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: #5DE62C;
+    color: #000;
+    font-weight: 600;
+}
+
+/*==============================================================
+/*              4.D.  ARTISTS LIST GRID
+/*==============================================================*/
+.artists-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.artist-group {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.artist-sidebar {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    transform: translateY(0);
+    transition: margin-top 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.artists-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+/*==============================================================
+/*                4.E.  INDIVIDUAL ARTIST CARD
+/*==============================================================*/
+
+.artist-card {
+    display: flex;
+    gap: 15px;
+    height: 100%;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    /* Removes the default link underline */
+    color: inherit;
+    /* Prevents the text from turning standard link blue */
+}
+
+.artist-card:hover .artist-line {
+    background-color: #5DE62C;
+    opacity: 1;
+}
+
+/*ITEM SIDE LINE*/
+.artist-line {
+    width: 2px;
+    background-color: #5DE62C;
+    opacity: 0.5;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.artist-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+
+.a-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    object-position: center;
+    margin-bottom: 20px;
+    display: block;
+    opacity: 0.8;
+    transition: all 0.4s ease;
+}
+
+.artist-card:hover .a-image {
+    opacity: 1;
+}
+
+.a-artist {
+    font-size: 14px;
+    font-weight: 300;
+    opacity: 1;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.a-name {
+    font-size: 32px;
+    font-weight: 500;
+    margin: 0 0 30px 0;
+}
+
+.a-caption {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.5;
+    opacity: 0.8;
+    margin: 0;
+}
 
 /*____________________________________________________________________________________________________
 
-/*                                        4.  ARTISTS PAGE
+/*                                        4. END OF ARTISTS MAIN PAGE
 /*____________________________________________________________________________________________________*/
 
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+/*____________________________________________________________________________________________________
+
+/*                                        5.  ARTISTS PROFILE TEMPLATE
+/*____________________________________________________________________________________________________*/
+
+/*==============================================================
+/*        5.A.  ARTIST IMAGE AND INTRODUCTION SECTION
+/*==============================================================*/
+
+/* SECTION SETTINGS */
 .artist-hero {
     position: relative;
     margin-bottom: 40px;
     width: calc(100% + 80px);
     margin-left: -40px;
-
     overflow: hidden;
 }
 
+/*==============================================================
+/*                       5.B.  ARTIST IMAGE
+/*==============================================================*/
 .artist-bg {
     width: 100%;
-    height: 100vh;
-
+    height: 90vh;
     object-fit: cover;
     display: block;
 }
 
+/*==============================================================
+/*             5.C.  OVERLAY TO WRITE ON THE IMAGE
+/*==============================================================*/
 .artist-overlay {
     position: absolute;
     inset: 0;
-
     padding: 40px;
-
     display: flex;
     align-items: flex-end;
     padding-bottom: 30px;
 }
 
-.trace-line {
-    position: absolute;
-    left: 25px;
-    z-index: 1;
-}
-
+/*==============================================================
+/*                  5.D.  OVERLAY GRID STRUCTURE
+/*==============================================================*/
 .art-info-grid {
     width: 100%;
-
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-
     gap: 24px;
 }
-
 
 .art-info-item.left,
 .art-info-item.right {
@@ -855,75 +1198,79 @@ body {
     overflow: visible;
 }
 
+/*==============================================================
+/*        5.E.  ARTIST NAME & "ONE SHARED TRACE"
+/*==============================================================*/
 .artist-name,
 .artist-title {
     margin: 0;
-    line-height: 1;
+    line-height: 1.2;
 }
 
+/* ARTIST NAME */
 .artist-name {
-    font-size: 45px;
+    font-size: 65px;
     font-weight: 300;
-
 }
 
+/* "ONE SHARED TRACE" */
 .artist-title {
-    font-size: 45px;
+    font-size: 65px;
     font-weight: 500;
     white-space: nowrap;
-
-
 }
 
+/*==============================================================
+/*          5.F.  ARTIST INTRODUCTION TEXT AND BUTTON
+/*==============================================================*/
 
-
+/* INTRODUCTION PARAGRAPH */
 .art-info-item.right p {
     font-size: 25px;
     font-weight: 300;
     line-height: 1.3;
-
     margin-bottom: 0px;
 }
 
+/* VISIT EVENTS BUTTON */
 .art-info-btn {
     width: 100%;
-
     padding: 14px 0;
-
     background: transparent;
     border: 3px solid #5DE62C;
-
     color: var(--text);
-
     border-radius: 0;
-
     font-size: 24px;
     font-weight: 400;
-
+    text-align: center;
     cursor: pointer;
-
     transition: all 0.3s ease;
+    text-decoration: none;
+    /* Removes the default link underline */
+    color: inherit;
+    /* Prevents the text from turning standard link blue */
 }
 
+.art-info-btn:hover {
+    background: #5DE62C;
+}
+
+/*==============================================================
+/*                  5.G.  NAVIGATION ARROWS
+/*==============================================================*/
 .artist-nav {
     position: absolute;
     top: 40%;
     transform: translateY(-50%);
-
     width: 160px;
     height: 160px;
-
     background: transparent;
     border: none;
-
     cursor: pointer;
-
     z-index: 10;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     transition: transform 0.3s ease;
 }
 
@@ -936,6 +1283,7 @@ body {
     transform: translateY(-50%) scale(1.15);
 }
 
+/* ARROW POSITION */
 .artist-nav-left {
     left: -10px;
 }
@@ -944,11 +1292,27 @@ body {
     right: -10px;
 }
 
-/*----------------------------------------------------*/
+/*==============================================================
+/*             5.H.  THE VERTICAL LINE ALONG THE PAGE
+                     (CAN BE MODIFIED FROM THE HTML)
+/*==============================================================*/
+.trace-line {
+    position: absolute;
+    left: 25px;
+    z-index: 1;
+}
+
+/*==============================================================
+/*                  5.I.  LIFE AND CAREER SECTION
+/*==============================================================*/
+
 .artist-life-section {
     margin-top: 80px;
 }
 
+/*==============================================================
+/*        5.J.  "LIFE & CAREER" AND ARTIST NAME DIV
+/*==============================================================*/
 .life-section-heading {
     margin-bottom: 60px;
 }
@@ -959,71 +1323,85 @@ body {
     line-height: 1;
 }
 
+/* "LIFE & CAREER" */
 .life-artist-name {
     font-size: 45px;
     font-weight: 300;
 }
 
+/* ARTIST NAME */
 .life-artist-title {
     font-size: 45px;
     font-weight: 500;
     white-space: nowrap;
 }
 
+/*==============================================================
+/*                      5.K.  BIRTH INFO
+/*==============================================================*/
 .birth p {
     font-size: 35px;
     font-weight: 100;
     opacity: 0.6;
 }
 
+/*==============================================================
+/*                5.L.  LIFE INFORMATION GRID
+/*==============================================================*/
 .life-content-grid {
     display: grid;
-
     grid-template-columns: 420px 420px;
-
     column-gap: 160px;
-
     justify-content: start;
-
     margin-bottom: 120px;
 }
 
+/* LIFE AND CAREER PARAGRAPHS */
 .life-content-item p {
     margin: 0;
-
     font-size: 25px;
     font-weight: 300;
     line-height: 1;
-
     text-align: left;
 }
 
+/*==============================================================
+/*                    5.M. LINKS AND BUTTONS
+/*==============================================================*/
 .life-section-links {
     display: flex;
     gap: 40px;
 }
 
-.life-section-links button {
+.life-section-links a {
     background: transparent;
     border: none;
-
     padding: 0;
-
     color: var(--text);
-
     font-size: 16px;
     font-weight: 300;
-
     cursor: pointer;
-
     transition: opacity 0.2s ease;
+    text-decoration: none;
+    /* Removes the default link underline */
+    color: inherit;
+    /* Prevents the text from turning standard link blue */
+    transition: all 0.3s ease;
 }
 
-.life-section-links button:hover {
+.life-section-links a:hover {
     opacity: 0.5;
 }
 
-/*-------------------------------------------------------*/
+.website-btn {
+    position: absolute;
+    right: 40px;
+}
+
+/*==============================================================
+/*                 5.N.  ARTIST WORK SECTION
+/*==============================================================*/
+
 .artist-work {
     position: relative;
 
@@ -1033,6 +1411,9 @@ body {
     overflow: hidden;
 }
 
+/*==============================================================
+/*              5.O.  IMAGE OR VID WORK EXAMPLE
+/*==============================================================*/
 .artistwork-bg {
     position: relative;
     width: 100%;
@@ -1042,6 +1423,9 @@ body {
     display: block;
 }
 
+/*==============================================================
+/*                  5.P.  WORK TEXT OVERLAY
+/*==============================================================*/
 .artistwork-overlay {
     position: absolute;
     inset: 0;
@@ -1080,12 +1464,14 @@ body {
     line-height: 1;
 }
 
+/* "ARTISTIC APPROUCH" */
 .artistwork-name {
     font-size: 45px;
     font-weight: 300;
     white-space: nowrap;
 }
 
+/* ARTIST NAME */
 .artistwork-title {
     font-size: 45px;
     font-weight: 500;
@@ -1094,10 +1480,14 @@ body {
 
 }
 
-/*-==================================================*/
+/*==============================================================
+/*                    5.Q.  WORK INFO SECTION
+/*==============================================================*/
+
 .artistwork-info-section {
     margin-top: 80px;
 }
+
 
 .life-info-grid {
     display: grid;
@@ -1121,39 +1511,38 @@ body {
     text-align: left;
 }
 
-.gallery-section {
+/*==============================================================
+/*                  5.F.  ARTIST GALLERY SECTION
+/*==============================================================*/
+
+.artist-gallery-section {
     margin-top: 120px;
     margin-bottom: 120px;
 }
 
-.gallery-grid {
+.artist-gallery-grid {
     display: grid;
-
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-
     gap: 24px;
 }
 
-.gallery-item {
+/* GRID ITEM */
+.artist-gallery-item {
     width: 100%;
     aspect-ratio: 1 / 1;
-    /* keeps square cells */
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     overflow: hidden;
     background: transparent;
 }
 
-.gallery-item img {
+/* GRID IMAGE */
+.artist-gallery-item img {
     width: 100%;
     height: 100%;
-
     object-fit: contain;
-    /*  this prevents cropping */
     display: block;
 }
 
@@ -1161,7 +1550,17 @@ body {
 
 /*                                        4. END OF ARTISTS PAGE
 /*____________________________________________________________________________________________________*/
-/* --- EVENTS CALENDAR LAYOUT --- */
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+/*____________________________________________________________________________________________________
+
+/*                                        6.     EVENTS PAGE
+/*____________________________________________________________________________________________________*/
+
+/*==============================================================
+/*                     6.A.  EVENTS SECTION
+/*==============================================================*/
 .events-section {
     width: 100%;
     margin-top: 80px;
@@ -1170,6 +1569,9 @@ body {
     flex-direction: column;
 }
 
+/*==============================================================
+/*              6.B. "EVENTS CALLENDAR" HEADER
+/*==============================================================*/
 .events-header {
     font-size: 40px;
     font-weight: 500;
@@ -1178,17 +1580,21 @@ body {
     letter-spacing: -1px;
 }
 
-/* --- FILTERS --- */
+/*==============================================================
+/*                       6.C.  FILTERS
+/*==============================================================*/
+
+/* FILTER DIV */
 .events-filters {
     display: flex;
     align-items: center;
     gap: 16px;
-    /* Equal spacing between every element */
     margin-bottom: 60px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding-bottom: 20px;
 }
 
+/* "FILTER" LABEL */
 .filter-label {
     font-size: 14px;
     font-weight: 500;
@@ -1197,13 +1603,14 @@ body {
     margin-right: 10px;
 }
 
+/* FILTER BUTTONS */
 .filter-buttons {
     display: flex;
     gap: 16px;
-    /* Matching structural container alignment */
+
 }
 
-/* Enforced size parameters for clean row consistency */
+/* FILTER BUTTONS */
 .custom-dropdown,
 .filter-btn {
     width: 135px;
@@ -1211,13 +1618,12 @@ body {
     box-sizing: border-box;
 }
 
-/* Sharp rectangular styling config */
+/* FILTER BUTTONS STYLE */
 .filter-btn {
     background: transparent;
     border: 1px solid #5DE62C;
     color: var(--text);
     border-radius: 0;
-    /* Pure rectangle flat styling */
     font-family: 'Inter', sans-serif;
     font-size: 13px;
     font-weight: 400;
@@ -1229,6 +1635,7 @@ body {
     transition: all 0.2s ease;
 }
 
+/* FILTER BUTTONS ON HOVER */
 .filter-btn:hover,
 .filter-btn.active {
     background: #5DE62C;
@@ -1236,7 +1643,10 @@ body {
     font-weight: 600;
 }
 
-/* --- CUSTOM OUTLINED DROPDOWN --- */
+/*==============================================================
+/*          6.D.  CUSTOM DROPDOWN MENU FOR THE FILTER
+/*==============================================================*/
+
 .custom-dropdown {
     position: relative;
 
@@ -1260,7 +1670,7 @@ body {
     background: transparent;
 }
 
-/* Green arrow block remains exactly the same */
+
 .custom-dropdown::after {
     content: "▼";
     position: absolute;
@@ -1281,15 +1691,11 @@ body {
 .dropdown-menu {
     position: absolute;
     top: calc(100% + 4px);
-    /* Sits perfectly below the trigger box */
     left: 0;
     width: 100%;
     background: #000000;
-    /* Pure black background on all devices */
     border: 1px solid rgba(255, 255, 255, 0.2);
-    /* Light outline to separate it from your black site background */
     display: none;
-    /* Hidden by default */
     z-index: 100;
     box-sizing: border-box;
 }
@@ -1311,7 +1717,6 @@ body {
 /* Highlighted state on hover */
 .dropdown-option:hover {
     background: #111111;
-    /* Subtle dark dark grey */
     color: #5DE62C;
 }
 
@@ -1321,12 +1726,14 @@ body {
     font-weight: 600;
 }
 
-/* --- CALENDAR GRID --- */
+/*==============================================================
+/*                  6.E.  CALENDAR GRID
+/*==============================================================*/
+
 .calendar-container {
     display: flex;
     flex-direction: column;
     gap: 80px;
-    /* Space between different months */
 }
 
 /* 2-Column layout: Month on left, Events on right */
@@ -1343,7 +1750,7 @@ body {
     align-items: start;
     transform: translateY(0);
     transition: margin-top 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    /* Smooth tracking movement */
+
 }
 
 .date-block {
@@ -1364,7 +1771,7 @@ body {
 .date-month {
     font-size: 45px;
     font-weight: 700;
-    /* Distinct bold emphasis formatting */
+
     letter-spacing: 1px;
     color: var(--text);
 }
@@ -1376,13 +1783,14 @@ body {
     gap: 40px;
 }
 
-/* --- INDIVIDUAL EVENT CARD --- */
+/*==============================================================
+/*                  6.F.  INDIVIDUAL EVENT CARD
+/*==============================================================*/
+
 .event-card {
     display: flex;
-    /* Puts the line and content side-by-side */
     gap: 15px;
     height: 100%;
-    /* Ensures it fills the grid row height */
     transition: transform 0.3s ease;
 }
 
@@ -1407,7 +1815,6 @@ body {
     width: 100%;
 }
 
-/* Typography inside the card */
 .e-days {
     font-size: 14px;
     font-weight: 300;
@@ -1431,20 +1838,14 @@ body {
     margin-bottom: 20px;
 }
 
-/* Image - Update this to a real <img> tag when you have photos */
-/* --- REAL EVENT IMAGES --- */
 .e-image {
     width: 100%;
     height: 180px;
     /* Forces all images to be the exact same height */
     object-fit: cover;
-    /* THE MAGIC TRICK: Zooms/crops the image to fit the box so it never looks stretched */
     object-position: center;
-    /* Keeps the subject centered during the crop */
     margin-bottom: 20px;
     display: block;
-
-
     opacity: 0.8;
     transition: all 0.4s ease;
 }
@@ -1477,7 +1878,20 @@ body {
     margin: 0;
 }
 
-/* contact us*/
+/*____________________________________________________________________________________________________
+
+/*                                         END OF EVENTS PAGE
+/*____________________________________________________________________________________________________*/
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+/*____________________________________________________________________________________________________
+
+/*                                        7.  CONTACT US PAGE
+/*____________________________________________________________________________________________________*/
+/*==============================================================
+/*              7.A.  CONTACT US SECTION SETTINGS
+/*==============================================================*/
 .contact-section {
     min-height: 80vh;
 
@@ -1489,6 +1903,9 @@ body {
     padding-bottom: 80px;
 }
 
+/*==============================================================
+/*                   7.B.  "CONTACT US" TITLE
+/*==============================================================*/
 .contact-title {
     margin: 0;
 
@@ -1498,6 +1915,9 @@ body {
     text-align: center;
 }
 
+/*==============================================================
+/*                   7.B.  "ATRACE TEAM" HEADER
+/*==============================================================*/
 .contact-subtitle {
     margin-top: 50px;
     margin-bottom: 50px;
@@ -1507,6 +1927,10 @@ body {
 
     text-transform: uppercase;
 }
+
+/*==============================================================
+/*                         7.C. THE CARD 
+/*==============================================================*/
 
 .contact-card {
     width: 100%;
@@ -1523,60 +1947,147 @@ body {
     gap: 24px;
 }
 
+/*==============================================================
+/*                      7.D. CONTACT FORM
+/*==============================================================*/
+/* LAYOUT */
 .form-group {
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
+/* FIELDS LABEL */
 .form-group label {
     font-size: 14px;
     font-weight: 500;
 }
 
+/* FORM FIELDS */
 .form-group input,
 .form-group textarea {
     width: 100%;
-
     padding: 12px;
-
     border: 1px solid #d0d0d0;
     border-radius: 8px;
     font-family: 'Inter';
     font-size: 14px;
-
     box-sizing: border-box;
-
     resize: vertical;
 }
 
+/* FORM FIELDS WHEN ACTIVE*/
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
     border-color: #5DE62C;
 }
 
+/* SUBMIT BUTTON */
 .submit-btn {
     width: 100%;
-
     padding: 14px 0;
-
     background: #000;
-
     border: 1px solid #000;
     border-radius: 8px;
     color: #ffffff;
-
     font-size: 14px;
     font-weight: 300;
-
     cursor: pointer;
-
     transition: all 0.3s ease;
 }
 
+/* SUBMIT BUTTON ON HOVER */
 .submit-btn:hover {
     background: #5DE62C;
     border-color: #5DE62C;
     color: #000000;
 }
+
+/*____________________________________________________________________________________________________
+
+/*                                         END OF CONTACT US
+/*____________________________________________________________________________________________________*/
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+/*____________________________________________________________________________________________________
+
+/*                                        8.  GALLARY PAGE
+/*____________________________________________________________________________________________________*/
+
+/*==============================================================
+/*                    8.A.  SECTION SETTINGS
+/*==============================================================*/
+.gallery-section {
+    margin-top: 120px;
+    margin-bottom: 120px;
+}
+
+/*==============================================================
+/*                  8.B. "OUR GALLERY" HEADER
+/*==============================================================*/
+.gallery-header {
+    font-size: 40px;
+    font-weight: 500;
+    margin-bottom: 100px;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+}
+
+/*==============================================================
+/*          8.C.  ARTIST NAME FOR EACH GALLERY (HEADER)
+/*==============================================================*/
+.gallery-section-heading {
+    margin-bottom: 60px;
+}
+
+.gallery-artist-title {
+    margin: 0;
+    line-height: 1;
+    font-size: 45px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/*==============================================================
+/*              8.D. IMAGES GRID LAYOUT AND SETTINGS
+/*==============================================================*/
+/* GRID LAYOUT */
+.gallery-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+
+    gap: 24px;
+    margin-bottom: 100px;
+}
+
+/* GRID ITEM */
+.gallery-item {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    /* keeps square cells */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: transparent;
+}
+
+/* GRID IMAGE */
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/*____________________________________________________________________________________________________
+
+/*                                         END OF GALLERY PAGE
+/*____________________________________________________________________________________________________*/
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
