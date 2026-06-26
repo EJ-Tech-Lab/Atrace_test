@@ -1,31 +1,37 @@
+// --- SEARCH BAR ---
 const searchContainer = document.querySelector(".search-container");
 const searchInput = document.getElementById("searchInput");
 
-searchInput.addEventListener("focus", () => {
-    searchContainer.classList.add("active");
-});
+// Only run this if the search elements actually exist on the page
+if (searchInput && searchContainer) {
+    searchInput.addEventListener("focus", () => {
+        searchContainer.classList.add("active");
+    });
 
-searchInput.addEventListener("blur", () => {
-    if (searchInput.value === "") {
-        searchContainer.classList.remove("active");
-    }
-});
+    searchInput.addEventListener("blur", () => {
+        if (searchInput.value === "") {
+            searchContainer.classList.remove("active");
+        }
+    });
+}
+
 // Toggle theme (for later use)
 function toggleTheme() {
     document.body.classList.toggle("light");
     document.body.classList.toggle("dark");
 }
+
+// --- CAROUSEL LOGIC ---
 document.addEventListener("DOMContentLoaded", () => {
     const items = document.querySelectorAll(".carousel-item");
+    if (items.length === 0) return; // Guard: Stop if no carousel on this page
+
     const totalItems = items.length;
-    let currentIndex = 0; // The item currently in the center
+    let currentIndex = 0; 
 
     function updateCarousel() {
         items.forEach((item, index) => {
-            // Strip old position classes
             item.className = "carousel-item";
-
-            // Calculate the shortest distance from the current index in a circular array
             let diff = index - currentIndex;
 
             if (diff > Math.floor(totalItems / 2)) {
@@ -34,7 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 diff += totalItems;
             }
 
-            // Assign structural classes based on distance from center
             if (diff === 0) item.classList.add("pos-center");
             else if (diff === -1) item.classList.add("pos-left-1");
             else if (diff === 1) item.classList.add("pos-right-1");
@@ -45,36 +50,32 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Event Delegation: Listen for clicks on the dynamically generated buttons
     document.addEventListener("click", (e) => {
-        // If clicking a previous arrow
         if (e.target.closest(".prev-btn")) {
             currentIndex = (currentIndex - 1 + totalItems) % totalItems;
             updateCarousel();
-        }
-        // If clicking a next arrow
-        else if (e.target.closest(".next-btn")) {
+        } else if (e.target.closest(".next-btn")) {
             currentIndex = (currentIndex + 1) % totalItems;
             updateCarousel();
         }
     });
 
-    // Fire on load
     updateCarousel();
 });
+
+// --- EVENTS PAGE LOGIC ---
 document.addEventListener("DOMContentLoaded", () => {
+    const dropdown = document.getElementById("monthDropdown");
+    if (!dropdown) return; // Guard: Stop if not on the Events page
+
     const categoryButtons = document.querySelectorAll(".filter-btn");
     const monthGroups = document.querySelectorAll(".month-group");
-
-    // Custom Dropdown Elements
-    const dropdown = document.getElementById("monthDropdown");
     const dropdownTrigger = dropdown.querySelector(".dropdown-trigger");
     const dropdownOptions = dropdown.querySelectorAll(".dropdown-option");
 
     let activeMonth = "all";
     let activeCategory = "all";
 
-    // Dynamic layout calculation for the sidebars
     function positionSidebars() {
         requestAnimationFrame(() => {
             monthGroups.forEach(group => {
@@ -110,7 +111,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Core Filter Logic
     function applyFilters() {
         monthGroups.forEach(group => {
             const groupMonth = group.getAttribute("data-month");
@@ -136,43 +136,31 @@ document.addEventListener("DOMContentLoaded", () => {
                 group.style.display = "none";
             }
         });
-
         positionSidebars();
     }
 
-    // --- CUSTOM DROPDOWN INTERACTION LOGIC ---
-
-    // Toggle menu open/close
     dropdownTrigger.addEventListener("click", (e) => {
-        e.stopPropagation(); // Prevents instant closing from document click listener
+        e.stopPropagation();
         dropdown.classList.toggle("open");
     });
 
-    // Option selection interaction
     dropdownOptions.forEach(option => {
         option.addEventListener("click", () => {
-            // Remove active status from options, add to clicked option
             dropdownOptions.forEach(opt => opt.classList.remove("active"));
             option.classList.add("active");
-
-            // Update main view text window and active system filters
             dropdownTrigger.textContent = option.textContent;
             activeMonth = option.getAttribute("data-value");
-
-            // Close panel and process filter updates
             dropdown.classList.remove("open");
             applyFilters();
         });
     });
 
-    // Close dropdown instantly if user clicks anywhere else on screen
     document.addEventListener("click", (e) => {
         if (!dropdown.contains(e.target)) {
             dropdown.classList.remove("open");
         }
     });
 
-    // --- CATEGORY BUTTON INTERACTION LOGIC ---
     categoryButtons.forEach(btn => {
         btn.addEventListener("click", (e) => {
             categoryButtons.forEach(b => b.classList.remove("active"));
@@ -182,26 +170,25 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Layout resizing tracker loops
     window.addEventListener("resize", positionSidebars);
-
-    // Initial pass run engine initialization layout settings
     applyFilters();
 });
 
+// --- ARTISTS PAGE LOGIC ---
 document.addEventListener("DOMContentLoaded", () => {
-    const categoryButtons = document.querySelectorAll(".filter-btn");
     const artistGroup = document.querySelector(".artist-group");
+    if (!artistGroup) return; // Guard: Stop if not on the Artists page
+
+    const categoryButtons = document.querySelectorAll(".filter-btn");
     const sidebar = document.querySelector(".artist-sidebar");
     const artistsGrid = document.querySelector(".artists-grid");
     const artistCards = document.querySelectorAll(".artist-card");
 
     let activeCategory = "all";
 
-    // Dynamic layout calculation for the empty sidebar (retains your centering math)
     function positionSidebars() {
         requestAnimationFrame(() => {
-            if (!artistGroup || artistGroup.style.display === "none") return;
+            if (artistGroup.style.display === "none") return;
 
             const visibleCards = Array.from(artistCards).filter(card => card.style.display !== "none");
             if (visibleCards.length === 0) return;
@@ -225,7 +212,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Core Filter Logic
     function applyFilters() {
         let hasVisibleArtists = false;
 
@@ -246,26 +232,36 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             artistGroup.style.display = "none";
         }
-
         positionSidebars();
     }
 
-    // --- CATEGORY BUTTON INTERACTION LOGIC ---
     categoryButtons.forEach(btn => {
         btn.addEventListener("click", (e) => {
-            // Remove active from all buttons, add to clicked
             categoryButtons.forEach(b => b.classList.remove("active"));
             e.target.classList.add("active");
-
-            // Update variable and filter the grid
             activeCategory = e.target.getAttribute("data-filter");
             applyFilters();
         });
     });
 
-    // Layout resizing tracker
     window.addEventListener("resize", positionSidebars);
-
-    // Initial layout setup
     applyFilters();
 });
+
+// --- MOBILE MENU LOGIC ---
+const burgerBtn = document.getElementById("burgerBtn");
+const closeBtn = document.getElementById("closeBtn");
+const mobileSidebar = document.getElementById("mobileSidebar");
+
+// Guard: Only run if the menu elements exist
+if (burgerBtn && closeBtn && mobileSidebar) {
+    burgerBtn.addEventListener("click", () => {
+        mobileSidebar.classList.add("active");
+        document.body.style.overflow = "hidden";
+    });
+
+    closeBtn.addEventListener("click", () => {
+        mobileSidebar.classList.remove("active");
+        document.body.style.overflow = "auto";
+    });
+}
