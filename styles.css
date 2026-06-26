@@ -980,6 +980,8 @@ body {
 
     .home-section {
         min-height: 25vh;
+        margin-left: -30px;
+        margin-right: -30px;
         /* Restores full height to stabilize the layout */
     }
 
@@ -998,12 +1000,12 @@ body {
     .home-section-overlay-grid {
         display: flex;
         flex-direction: column;
-        width: 66%;
+        width: 75%;
         /* Keeps it from touching the screen edges */
-        max-width: 350px;
+
 
         /* Gives you that compact "30% width" feel safely */
-        margin: 0 auto;
+        margin: 0 20%;
         /* Centers the column horizontally */
         gap: 0px;
 
@@ -1023,19 +1025,19 @@ body {
     }
 
     .home-section-overlay-grid-btn {
-        width: clamp(40%, 40vw, 60%);
-        font-size: 16px;
+        width: clamp(40%, 5vw, 60%);
+        font-size: 12px;
         align-self: center;
-        padding: 7px 0;
+        padding: 2px 0;
     }
 
     .home-section-overlay-grid-item.right p {
-        font-size: clamp(15px, 2vw, 25px);
+        font-size: clamp(13px, 2vw, 25px);
     }
 
     .home-section-overlay-quote-part-1,
     .home-section-overlay-quote-part-2 {
-        font-size: clamp(20px, 4vw, 65px);
+        font-size: clamp(30px, 4vw, 65px);
 
     }
 }
