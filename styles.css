@@ -820,11 +820,10 @@ body {
 .hero-corner.top-left {
     top: 40px;
     left: 40px;
-    /* Aligns perfectly with your body padding */
     text-align: left;
 }
 
-.hero-corner.top-right h2 {
+.hero-corner.top-left h2 {
     margin: 0;
     margin-top: 40px;
     font-size: 45px;
