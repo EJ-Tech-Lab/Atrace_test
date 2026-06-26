@@ -188,3 +188,84 @@ document.addEventListener("DOMContentLoaded", () => {
     // Initial pass run engine initialization layout settings
     applyFilters();
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const categoryButtons = document.querySelectorAll(".filter-btn");
+    const artistGroup = document.querySelector(".artist-group");
+    const sidebar = document.querySelector(".artist-sidebar");
+    const artistsGrid = document.querySelector(".artists-grid");
+    const artistCards = document.querySelectorAll(".artist-card");
+
+    let activeCategory = "all";
+
+    // Dynamic layout calculation for the empty sidebar (retains your centering math)
+    function positionSidebars() {
+        requestAnimationFrame(() => {
+            if (!artistGroup || artistGroup.style.display === "none") return;
+
+            const visibleCards = Array.from(artistCards).filter(card => card.style.display !== "none");
+            if (visibleCards.length === 0) return;
+
+            sidebar.style.marginTop = "0px";
+
+            let firstRowMaxHeight = 0;
+            const itemsInFirstRow = Math.min(visibleCards.length, 3);
+
+            for (let i = 0; i < itemsInFirstRow; i++) {
+                const cardHeight = visibleCards[i].offsetHeight;
+                if (cardHeight > firstRowMaxHeight) {
+                    firstRowMaxHeight = cardHeight;
+                }
+            }
+
+            const sidebarHeight = sidebar.offsetHeight;
+            const targetOffset = (firstRowMaxHeight - sidebarHeight) / 2;
+
+            sidebar.style.marginTop = `${Math.max(0, targetOffset)}px`;
+        });
+    }
+
+    // Core Filter Logic
+    function applyFilters() {
+        let hasVisibleArtists = false;
+
+        artistCards.forEach(card => {
+            const artistCategory = card.getAttribute("data-category");
+            const matchesCategory = activeCategory === "all" || artistCategory === activeCategory;
+
+            if (matchesCategory) {
+                card.style.display = "flex";
+                hasVisibleArtists = true;
+            } else {
+                card.style.display = "none";
+            }
+        });
+
+        if (hasVisibleArtists) {
+            artistGroup.style.display = "grid";
+        } else {
+            artistGroup.style.display = "none";
+        }
+
+        positionSidebars();
+    }
+
+    // --- CATEGORY BUTTON INTERACTION LOGIC ---
+    categoryButtons.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            // Remove active from all buttons, add to clicked
+            categoryButtons.forEach(b => b.classList.remove("active"));
+            e.target.classList.add("active");
+
+            // Update variable and filter the grid
+            activeCategory = e.target.getAttribute("data-filter");
+            applyFilters();
+        });
+    });
+
+    // Layout resizing tracker
+    window.addEventListener("resize", positionSidebars);
+
+    // Initial layout setup
+    applyFilters();
+});
