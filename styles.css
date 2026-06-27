@@ -635,13 +635,9 @@ body {
 }
 
 .future-event-item.right img {
-
-
     max-height: 800px;
     width: auto;
     max-width: 500%;
-
-
     display: block;
     margin-left: auto;
 }
@@ -2231,7 +2227,7 @@ body {
 
     .hero-carousel-section,
     .home-hero-section,
-    .about-section {
+    .footer {
         display: none;
     }
 
@@ -2333,7 +2329,7 @@ body {
 
 
     .future-event-section {
-        min-height: 100vh;
+        min-height: 25vh;
         overflow-x: hidden;
     }
 
@@ -2384,12 +2380,59 @@ body {
         margin: 0;
         width: 100%;
         max-width: 700px;
-        /* Keeps it from getting comically large on iPads */
+
         height: auto;
     }
 
-    .footer {
-        display: none;
+    /*---------------------------------------------------------*/
+
+    .about-section {
+        min-height: 25vh;
+        margin-top: 10px;
+        margin-bottom: 15px;
+        overflow-x: hidden;
     }
 
+    /* "ABOUT ATRACE" */
+    .about-heading {
+        font-size: clamp(14px, 1vw, 65px);
+
+        margin-bottom: 15px;
+
+    }
+
+    .about-section-grid {
+        display: flex;
+        flex-direction: column;
+        width: 75%;
+        padding: 0 20%;
+        gap: 0px;
+        margin: 0;
+    }
+
+    .about-section-grid-item {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* THE ABOUT PARAGRAPH */
+    .about-text {
+        font-size: clamp(11px, 2vw, 25px);
+        margin-top: 13px;
+        width: 75%;
+
+    }
+
+
+    .about-section-grid-item.left,
+    .about-section-grid-item.right {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        margin: 0;
+        padding: 0;
+
+    }
 }
