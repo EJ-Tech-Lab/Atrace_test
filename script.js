@@ -1,2848 +1,322 @@
-:root {
-    --bg-dark: #000000;
-    --bg-light: #5DE62C;
-
-    --text-dark: #ffffff;
-    --text-light: #000000;
-
-    /*  CHANGE HEADER FONT SIZE HERE */
-    --text-header-size: 12px;
-
-
-}
-
-/* Default = dark mode */
-body.dark {
-    --bg: var(--bg-dark);
-    --text: var(--text-dark);
-}
-
-/* Light mode */
-body.light {
-    --bg: var(--bg-light);
-    --text: var(--text-light);
-}
-
-body {
-    margin: 0;
-    padding: 40px;
-    font-family: 'Inter';
-    background-color: var(--bg);
-    color: var(--text);
-    display: flex;
-    flex-direction: column;
-    overflow-x: hidden;
-}
-
-/*____________________________________________________________________________________________________
-
-/*                                        1. HEADER SECTION
-/*____________________________________________________________________________________________________
-
-/* Header Layout */
-.header {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    margin-bottom: 40px;
-    padding: 0;
-    gap: 20px;
-    z-index: 99;
-}
-
-/*==============================================================
-/*              1.A. ATRACE LOGO CONF AND SVG MERGING
-/*==============================================================*/
-
-.logo {
-    display: flex;
-    align-items: center;
-}
-
-.logo-inner {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-
-    /* prevents stacking */
-    flex-wrap: nowrap;
-
-}
-
-.logo-inner svg {
-    display: block;
-    /* Prevent shrinking */
-    flex-shrink: 0;
-
-}
-
-/*==============================================================
-/*                      1.B. NAVIGATION
-/*==============================================================
-
-/* Navigation */
-.nav {
-    display: flex;
-    gap: 30px;
-}
-
-.nav a {
-    text-decoration: none;
-    font-size: var(--text-header-size);
-    color: var(--text);
-    font-weight: 300;
-    transition: opacity 0.2s ease;
-
-
-}
-
-.nav a:hover {
-    color: #5DE62C;
-}
-
-/* Right side SEARCH AND PROFILE */
-.actions {
-    display: flex;
-    align-items: baseline;
-    gap: 20px;
-}
-
-/*==============================================================
-/*                     1.C. SEARCH BAR
-/*==============================================================
-
-/* Search Container */
-.search-container {
-    position: relative;
-    width: 150px;
-    /* collapsed width */
-    transition: width 0.3s ease;
-}
-
-/*
-.search-container.active {
-    width: 150px;
-     expanded width 
-}*/
-
-/* Input */
-.search-box {
-    display: flex;
-    align-items: baseline;
-    position: relative;
-}
-
-.search-box input {
-    width: 50%;
-    margin: 0 auto;
-    /* center it */
-    display: block;
-
-    background: transparent;
-    border: none;
-    outline: none;
-
-    color: var(--text);
-    font-size: var(--text-header-size);
-    padding: 0;
-    padding-bottom: 3px;
-    font-weight: 300;
-    text-align: center;
-    /* center placeholder */
-    transition: all 0.3s ease;
-}
-
-/* Placeholder style */
-.search-box input::placeholder {
-    color: var(--text);
-    opacity: 1;
-    font-size: var(--text-header-size);
-    font-weight: 300;
-}
-
-/* Underline (default) */
-.underline {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0%;
-    height: 1px;
-    background: var(--text);
-    transform: translateX(-50%);
-    transition: all 0.3s ease;
-}
-
-/* ACTIVE STATE */
-.search-container.active .search-box input {
-    width: 100%;
-    margin: 0;
-    text-align: left;
-    /* move text to left */
-}
-
-/* ACTIVE STATE */
-.search-container.active .underline {
-    width: 100%;
-    background: #5DE62C;
-}
-
-/* Icon (hidden initially) */
-.search-icon {
-    position: relative;
-    right: 0;
-    opacity: 0;
-    transform: translateX(10px);
-    transition: all 0.3s ease;
-    color: var(--text);
-
-}
-
-.search-box button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    align-items: center;
-}
-
-.search-icon svg {
-    width: 9px;
-    height: 9Px;
-}
-
-
-.search-container.active .search-icon {
-    opacity: 1;
-    transform: translateX(0);
-    color: #5DE62C;
-}
-
-
-
-
-/*==============================================================
-/*                     1.D.  CONTACT US
-/*==============================================================*/
-.auth a {
-    text-decoration: none;
-    color: var(--text);
-    font-weight: 300;
-    font-size: var(--text-header-size);
-}
-
-.auth a:hover {
-    color: #5DE62C;
-}
-
-/*____________________________________________________________________________________________________
-
-/*                                     1.END OF HEADER SECTION
-/*____________________________________________________________________________________________________*/
-
-/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-/*____________________________________________________________________________________________________
-
-/*                                        2 FOOTER SECTION
-/*____________________________________________________________________________________________________*/
-
-.footer {
-
-    margin-bottom: -40px;
-    border-top: 1px solid white;
-    background: #000000;
-
-    margin-left: -40px;
-    margin-right: -40px;
-
-    padding: 40px 40px;
-
-    color: #ffffff;
-}
-
-.footer * {
-    min-width: 0;
-}
-
-.footer-grid {
-    display: grid;
-
-    grid-template-columns:
-        1.4fr 1fr 1fr 1fr;
-
-    gap: 60px;
-}
-
-.footer-column {
-    display: flex;
-    flex-direction: column;
-}
-
-.footer-column p {
-    font-size: 14px;
-    font-weight: 600;
-
-    margin: 0 0 24px 0;
-
-    letter-spacing: 0.05em;
-}
-
-.footer-column a {
-    text-decoration: none;
-
-    color: #ffffff;
-
-    font-size: 14px;
-    font-weight: 400;
-
-    margin-bottom: 14px;
-
-    transition: opacity 0.2s ease;
-}
-
-.footer-column a:hover {
-    opacity: 0.6;
-}
-
-.brand-column {
-    justify-content: left;
-}
-
-.footer-logo {
-    margin-bottom: 20px;
-}
-
-.socials {
-    display: flex;
-    gap: 18px;
-}
-
-.socials a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 36px;
-    height: 36px;
-
-    border: 0px;
-
-    transition: all 0.2s ease;
-}
-
-
-/*____________________________________________________________________________________________________
-
-/*                                        2. END OF FOOTER SECTION
-/*____________________________________________________________________________________________________*/
-
-/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-/*____________________________________________________________________________________________________
-
-/*                                        3.      HOME PAGE
-/*____________________________________________________________________________________________________*/
-/*==============================================================
-/*                     3.A. HOME SECTION
-/*==============================================================*/
-.home-section {
-    position: relative;
-    flex: 1;
-    min-height: 100vh;
-}
-
-/*==============================================================
-/*                  3.B. BACKGROUND ICONS GRID
-/*==============================================================*/
-.background-grid {
-    height: 100vh;
-    display: grid;
-    width: 100%;
-    height: 100%;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    column-gap: 24px;
-    row-gap: 0px;
-}
-
-/* GRID ITEMS */
-.item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* THE SVG BACKGROUND ICONS */
-.item svg {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-
-}
-
-@media (max-width: 1100px) {
-    .background-grid {
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: auto auto
-    }
-
-    .item.first,
-    .item.fifth {
-        display: none;
-    }
-}
-
-/*==============================================================
-/*                3.C. HOME SECTION TEXT OVERLAY
-/*==============================================================*/
-.home-section-overlay {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 20%;
-    display: flex;
-    align-items: flex-end;
-
-
-}
-
-.home-section-overlay-grid {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-
-}
-
-
-.home-section-overlay-grid-item.left,
-.home-section-overlay-grid-item.right {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-}
-
-.home-section-overlay-grid-item.left {
-    overflow: visible;
-    padding-top: 19px;
-}
-
-.home-section-overlay-quote-part-1,
-.home-section-overlay-quote-part-2 {
-    margin: 0;
-    line-height: 1.2;
-}
-
-/* TWO ARTISTS */
-.home-section-overlay-quote-part-1 {
-    font-size: clamp(25px, 5vw, 65px);
-    font-weight: 300;
-}
-
-/* "ONE SHARED TRACE" */
-.home-section-overlay-quote-part-2 {
-    font-size: clamp(25px, 5vw, 65px);
-    font-weight: 500;
-    white-space: nowrap;
-}
-
-/* WEBSITE INTRODUCTION PARAGRAPH */
-.home-section-overlay-grid-item.right p {
-    font-size: clamp(18px, 2vw, 25px);
-    font-weight: 300;
-    line-height: 1.3;
-    margin-bottom: 24px;
-}
-
-/* VISIT EVENTS BUTTON */
-.home-section-overlay-grid-btn {
-    width: 100%;
-
-    padding: 14px 0;
-    text-align: center;
-    background: transparent;
-    border: 2px solid #5DE62C;
-
-    color: var(--text);
-
-    border-radius: 0;
-
-    font-size: 24px;
-    font-weight: 400;
-
-    cursor: pointer;
-    text-decoration: none;
-    /* Removes the default link underline */
-    color: inherit;
-    /* Prevents the text from turning standard link blue */
-    transition: all 0.3s ease;
-}
-
-.home-section-overlay-grid-btn:hover {
-    background: #5DE62C;
-}
-
-/*==============================================================
-/*                     3.D. ABOUT TRACE SECTION
-/*==============================================================*/
-.about-section {
-    width: 100%;
-    margin-top: 50px;
-    margin-bottom: 150px;
-}
-
-/* "ABOUT ATRACE" */
-.about-heading {
-    font-size: 45px;
-    font-weight: 300;
-    margin-bottom: 60px;
-    line-height: 1;
-}
-
-/* "ATRACE" ON ITS OWN */
-.about-heading span {
-    font-weight: 500;
-}
-
-.about-section-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 310px;
-}
-
-.about-section-grid-item {
-    display: flex;
-    flex-direction: column;
-}
-
-/* THE ABOUT PARAGRAPH */
-.about-text {
-    font-size: 25px;
-    font-weight: 300;
-    margin-top: 13px;
-
-}
-
-
-.about-section-grid-item.left,
-.about-section-grid-item.right {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-
-}
-
-
-/*==============================================================
-/*                     3.E. FUTURE EVENT SECTION
-/*==============================================================*/
-.future-event-section {
-    width: 100%;
-    margin-top: 50px;
-    margin-bottom: 150px;
-}
-
-.future-event-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 60px;
-    align-items: start;
-}
-
-/* LEFT COLUMN (TEXT) */
-.future-event-item.left {
-    display: flex;
-    flex-direction: column;
-    padding-top: 0px;
-    padding-bottom: 80px;
-}
-
-/* "FUTURE EVENTS" HEADER */
-.future-event-section-heading {
-    margin-bottom: 150px;
-
-}
-
-/* EVENT NAME */
-.future-event-artist-name {
-    font-size: 45px;
-    font-weight: 300;
-    margin: 0;
-    line-height: 1.2;
-}
-
-/*ARTIST NAME */
-.future-event-artist-title {
-    font-size: 45px;
-    font-weight: 500;
-    margin: 0;
-    line-height: 1.2;
-    white-space: nowrap;
-}
-
-.future-event-artist p {
-    font-size: 35px;
-    font-weight: 100;
-    opacity: 0.6;
-    margin: 0 0 40px 0;
-
-}
-
-/* EVENT INFO PARAGRAPH */
-.future-event-content-item p {
-    margin: 0 0 150px 0;
-    font-size: 25px;
-    font-weight: 300;
-    line-height: 1.4;
-}
-
-/*==============================================================
-/*                3.F. FUTURE EVENT SECTION BUTTONS
-/*==============================================================*/
-.future-event-section-links {
-    display: flex;
-    gap: 40px;
-    margin-top: auto;
-}
-
-.future-event-section-links a {
-    background: transparent;
-    border: none;
-    padding: 0;
-    color: var(--text);
-    font-size: 16px;
-    font-weight: 400;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: opacity 0.2s ease;
-    text-decoration: none;
-    /* Removes the default link underline */
-    color: inherit;
-    /* Prevents the text from turning standard link blue */
-}
-
-.future-event-section-links a:hover {
-    opacity: 0.5;
-}
-
-/*==============================================================
-/*                3.G. FUTURE EVENT IMAGE (POSTER/TICKET)
-/*==============================================================*/
-.future-event-item.right {
-    width: 100%;
-
-}
-
-.future-event-item.right img {
-    max-height: 800px;
-    width: auto;
-    max-width: 500%;
-    display: block;
-    margin-left: auto;
-}
-
-/*==============================================================
-/*                     3.H. CAROUSEL SECTION
-/*==============================================================*/
-
-.hero-carousel-section {
-    position: relative;
-    background-color: #F5FFED;
-
-    width: calc(100% + 80px);
-    height: 800px;
-    margin-left: -40px;
-    /* Offset the 40px body padding so it bleeds to the screen edges */
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.carousel-container {
-    position: relative;
-    width: 100%;
-    height: 70%;
-    margin-top: 150px;
-    margin-bottom: 40px;
-}
-
-.carousel-item {
-    position: absolute;
-    top: 40%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-
-
-/*==============================================================
-/*                     3.I. THE POSITIONS LOGIC
-/*==============================================================*/
-
-/* Center (Active) */
-.pos-center {
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1);
-    z-index: 5;
-    opacity: 1;
-}
-
-/* Middle Left/Right */
-.pos-left-1 {
-    left: 20%;
-    transform: translate(-50%, -50%) scale(0.7);
-    z-index: 4;
-    opacity: 0.8;
-}
-
-.pos-right-1 {
-    left: 80%;
-    transform: translate(-50%, -50%) scale(0.7);
-    z-index: 4;
-    opacity: 0.8;
-}
-
-
-/*==============================================================
-/*                     3.J. CAROUSEL TEXT & BUTTONS
-/*==============================================================*/
-
-.media-info {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-top: 20px;
-    width: 450px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-}
-
-/* Only show text and play button on the active center item */
-.pos-center .media-info {
-    opacity: 1;
-    pointer-events: auto;
-    transition-delay: 0.2s;
-    /* Reveal slightly after moving */
-}
-
-.media-title {
-    font-size: 18px;
-    font-weight: 400;
-    margin: 0 0 15px 0;
-    color: #000000;
-    text-transform: uppercase;
-}
-
-.media-desc-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.media-desc {
-    flex: 1;
-    text-align: center;
-    font-size: 12px;
-    font-weight: 300;
-    color: #000000;
-    margin: 0 15px;
-    line-height: 1.5;
-}
-
-/*==============================================================
-/*               3.K. CAROUSEL Play and Nav Buttons
-/*==============================================================*/
-
-.nav-btn,
-.play-btn {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    transition: all 0.2s;
-}
-
-.nav-btn svg {
-    width: 30px;
-    height: 30px;
-    fill: #5DE62C;
-    transition: fill 0.2s;
-}
-
-.nav-btn:hover svg {
-    fill: #5DE62C;
-}
-
-/*==============================================================
-/*                 3.L. CAROUSEL SVG BUTTON LOGIC
-/*==============================================================*/
-
-.media-svg-btn {
-    background: transparent;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    width: 280px;
-    height: 280px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    outline: none;
-    /* Make un-centered items unclickable so they don't trigger actions accidentally */
-    pointer-events: none;
-}
-
-.media-svg-btn svg {
-    width: 100%;
-    height: 100%;
-    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-/* Allow clicking ONLY when it's the center active item */
-.pos-center .media-svg-btn {
-    pointer-events: auto;
-}
-
-/* Add a subtle interactive scale effect on hover */
-.pos-center .media-svg-btn:hover svg {
-    transform: scale(1.05);
-}
-
-/*==============================================================
-/*                 3.M. CAROUSEL CORNER ELEMENTS
-/*==============================================================*/
-
-/* Base setup for all corners */
-.hero-corner {
-    position: absolute;
-    z-index: 20;
-    /* Ensures they sit above the sliding carousel items */
-}
-
-/* Top left Text */
-.hero-corner.top-left {
-    top: 40px;
-    left: 40px;
-    text-align: left;
-}
-
-.hero-corner.top-left h2 {
-    margin: 0;
-    margin-top: 40px;
-    font-size: 45px;
-    font-weight: 300;
-    color: #000000;
-    opacity: 1;
-
-}
-
-/* Bottom Left Links */
-.hero-corner.bottom-left {
-    bottom: 60px;
-    left: 40px;
-    /* Aligns perfectly with your body padding */
-    display: flex;
-    gap: 30px;
-}
-
-.hero-corner.bottom-left a {
-    text-decoration: none;
-    font-size: 18px;
-    color: #000000;
-    font-weight: 300;
-    transition: color 0.2s ease;
-}
-
-.hero-corner.bottom-left a:hover {
-    color: #5DE62C;
-}
-
-/*==============================================================
-/*                     3.N. VIDEO EXAMPLE SECTION
-/*==============================================================*/
-.home-hero-section {
-    position: relative;
-    width: calc(100% + 80px);
-    margin-left: -40px;
-    margin-top: 200px;
-    margin-bottom: 200px;
-    overflow: hidden;
-}
-
-.home-hero-section-bg {
-    width: 100%;
-    height: 100vh;
-    object-fit: cover;
-    display: block;
-}
-
-.home-hero-section-overlay {
-    position: absolute;
-    inset: 0;
-    padding: 40px;
-    display: flex;
-    align-items: flex-end;
-    padding-bottom: 30px;
-}
-
-
-.home-hero-section-overlay-grid {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-}
-
-
-.home-hero-section-overlay-grid-item.left {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    overflow: visible;
-}
-
-.home-artist-quote-part-1,
-.home-artist-quote-part-2 {
-    margin: 0;
-    line-height: 1;
-}
-
-.home-artist-quote-part-1 {
-    font-size: 45px;
-    font-weight: 100;
-}
-
-.home-artist-quote-part-2 {
-    font-size: 45px;
-    font-weight: 700;
-    white-space: nowrap;
-
-
-}
-
-.home-hero-section-play-btn {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: transparent;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    z-index: 5;
-    transition: transform 0.3s ease;
-}
-
-.home-hero-section-play-btn:hover {
-    transform: translate(-50%, -50%) scale(1.1);
-}
-
-.home-hero-section-play-btn svg {
-    display: block;
-}
-
-/*____________________________________________________________________________________________________
-
-/*                                        3. END OF HOME PAGE
-/*____________________________________________________________________________________________________*/
-
-/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
-/*____________________________________________________________________________________________________
-
-/*                                        4. ARTISTS MAIN PAGE
-/*____________________________________________________________________________________________________*/
-
-/*==============================================================
-/*              4.A.  ARTISTS LIST SECTION
-/*==============================================================*/
-.artists-section {
-    width: 100%;
-    margin-top: 80px;
-    margin-bottom: 100px;
-    display: flex;
-    flex-direction: column;
-}
-
-/*==============================================================
-/*              4.B.  "OUR ARTISTS" HEADER
-/*==============================================================*/
-.artists-header {
-    font-size: 40px;
-    font-weight: 500;
-    margin-bottom: 40px;
-    text-transform: uppercase;
-    letter-spacing: -1px;
-}
-
-/*==============================================================
-/*                        4.C.  FILTER
-/*==============================================================*/
-.artists-filters {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 60px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: 20px;
-}
-
-.filter-label {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--text);
-    text-transform: uppercase;
-    margin-right: 10px;
-}
-
-.filter-buttons {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-
-}
-
-.filter-btn {
-    width: 135px;
-    height: 30px;
-    box-sizing: border-box;
-    background: transparent;
-    border: 1px solid #5DE62C;
-    color: var(--text);
-    border-radius: 0;
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    font-weight: 400;
-    cursor: pointer;
-    text-transform: uppercase;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-}
-
-.filter-btn:hover,
-.filter-btn.active {
-    background: #5DE62C;
-    color: #000;
-    font-weight: 600;
-}
-
-/*==============================================================
-/*              4.D.  ARTISTS LIST GRID
-/*==============================================================*/
-.artists-container {
-    display: flex;
-    flex-direction: column;
-}
-
-.artist-group {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 40px;
-    align-items: start;
-}
-
-.artist-sidebar {
-    display: flex;
-    justify-content: center;
-    align-items: start;
-    transform: translateY(0);
-    transition: margin-top 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.artists-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-}
-
-/*==============================================================
-/*                4.E.  INDIVIDUAL ARTIST CARD
-/*==============================================================*/
-
-.artist-card {
-    display: flex;
-    gap: 15px;
-    height: 100%;
-    transition: transform 0.3s ease;
-    cursor: pointer;
-    text-decoration: none;
-    /* Removes the default link underline */
-    color: inherit;
-    /* Prevents the text from turning standard link blue */
-}
-
-.artist-card:hover .artist-line {
-    background-color: #5DE62C;
-    opacity: 1;
-}
-
-/*ITEM SIDE LINE*/
-.artist-line {
-    width: 2px;
-    background-color: #5DE62C;
-    opacity: 0.5;
-    flex-shrink: 0;
-    transition: all 0.3s ease;
-}
-
-.artist-content {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-
-.a-image {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    object-position: center;
-    margin-bottom: 20px;
-    display: block;
-    opacity: 0.8;
-    transition: all 0.4s ease;
-}
-
-.artist-card:hover .a-image {
-    opacity: 1;
-}
-
-.a-artist {
-    font-size: 14px;
-    font-weight: 300;
-    opacity: 1;
-    text-transform: uppercase;
-    margin-bottom: 5px;
-}
-
-.a-name {
-    font-size: 32px;
-    font-weight: 500;
-    margin: 0 0 30px 0;
-}
-
-.a-caption {
-    font-size: 14px;
-    font-weight: 300;
-    line-height: 1.5;
-    opacity: 0.8;
-    margin: 0;
-}
-
-/*____________________________________________________________________________________________________
-
-/*                                        4. END OF ARTISTS MAIN PAGE
-/*____________________________________________________________________________________________________*/
-
-/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
-/*____________________________________________________________________________________________________
-
-/*                                        5.  ARTISTS PROFILE TEMPLATE
-/*____________________________________________________________________________________________________*/
-
-/*==============================================================
-/*        5.A.  ARTIST IMAGE AND INTRODUCTION SECTION
-/*==============================================================*/
-
-/* SECTION SETTINGS */
-.artist-hero {
-    position: relative;
-    margin-bottom: 40px;
-    width: calc(100% + 80px);
-    margin-left: -40px;
-    overflow: hidden;
-}
-
-/*==============================================================
-/*                       5.B.  ARTIST IMAGE
-/*==============================================================*/
-.artist-bg {
-    width: 100%;
-    height: 90vh;
-    object-fit: cover;
-    display: block;
-}
-
-/*==============================================================
-/*             5.C.  OVERLAY TO WRITE ON THE IMAGE
-/*==============================================================*/
-.artist-overlay {
-    position: absolute;
-    inset: 0;
-    padding: 40px;
-    display: flex;
-    align-items: flex-end;
-    padding-bottom: 30px;
-}
-
-/*==============================================================
-/*                  5.D.  OVERLAY GRID STRUCTURE
-/*==============================================================*/
-.art-info-grid {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-}
-
-.art-info-item.left,
-.art-info-item.right {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-}
-
-.art-info-item.left {
-    overflow: visible;
-}
-
-/*==============================================================
-/*        5.E.  ARTIST NAME & "ONE SHARED TRACE"
-/*==============================================================*/
-.artist-name,
-.artist-title {
-    margin: 0;
-    line-height: 1.2;
-}
-
-/* ARTIST NAME */
-.artist-name {
-    font-size: 65px;
-    font-weight: 300;
-}
-
-/* "ONE SHARED TRACE" */
-.artist-title {
-    font-size: 65px;
-    font-weight: 500;
-    white-space: nowrap;
-}
-
-/*==============================================================
-/*          5.F.  ARTIST INTRODUCTION TEXT AND BUTTON
-/*==============================================================*/
-
-/* INTRODUCTION PARAGRAPH */
-.art-info-item.right p {
-    font-size: 25px;
-    font-weight: 300;
-    line-height: 1.3;
-    margin-bottom: 0px;
-}
-
-/* VISIT EVENTS BUTTON */
-.art-info-btn {
-    width: 100%;
-    padding: 14px 0;
-    background: transparent;
-    border: 3px solid #5DE62C;
-    color: var(--text);
-    border-radius: 0;
-    font-size: 24px;
-    font-weight: 400;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    /* Removes the default link underline */
-    color: inherit;
-    /* Prevents the text from turning standard link blue */
-}
-
-.art-info-btn:hover {
-    background: #5DE62C;
-}
-
-/*==============================================================
-/*                  5.G.  NAVIGATION ARROWS
-/*==============================================================*/
-.artist-nav {
-    position: absolute;
-    top: 40%;
-    transform: translateY(-50%);
-    width: 160px;
-    height: 160px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s ease;
-}
-
-.artist-nav svg {
-    width: 160px;
-    height: 160px;
-}
-
-.artist-nav:hover {
-    transform: translateY(-50%) scale(1.15);
-}
-
-/* ARROW POSITION */
-.artist-nav-left {
-    left: -10px;
-}
-
-.artist-nav-right {
-    right: -10px;
-}
-
-/*==============================================================
-/*             5.H.  THE VERTICAL LINE ALONG THE PAGE
-                     (CAN BE MODIFIED FROM THE HTML)
-/*==============================================================*/
-.trace-line {
-    position: absolute;
-    left: 25px;
-    z-index: 1;
-}
-
-/*==============================================================
-/*                  5.I.  LIFE AND CAREER SECTION
-/*==============================================================*/
-
-.artist-life-section {
-    margin-top: 80px;
-}
-
-/*==============================================================
-/*        5.J.  "LIFE & CAREER" AND ARTIST NAME DIV
-/*==============================================================*/
-.life-section-heading {
-    margin-bottom: 60px;
-}
-
-.life-artist-name,
-.life-artist-title {
-    margin: 0;
-    line-height: 1;
-}
-
-/* "LIFE & CAREER" */
-.life-artist-name {
-    font-size: 45px;
-    font-weight: 300;
-}
-
-/* ARTIST NAME */
-.life-artist-title {
-    font-size: 45px;
-    font-weight: 500;
-    white-space: nowrap;
-}
-
-/*==============================================================
-/*                      5.K.  BIRTH INFO
-/*==============================================================*/
-.birth p {
-    font-size: 35px;
-    font-weight: 100;
-    opacity: 0.6;
-}
-
-/*==============================================================
-/*                5.L.  LIFE INFORMATION GRID
-/*==============================================================*/
-.life-content-grid {
-    display: grid;
-    grid-template-columns: 420px 420px;
-    column-gap: 160px;
-    justify-content: start;
-    margin-bottom: 120px;
-}
-
-/* LIFE AND CAREER PARAGRAPHS */
-.life-content-item p {
-    margin: 0;
-    font-size: 25px;
-    font-weight: 300;
-    line-height: 1;
-    text-align: left;
-}
-
-/*==============================================================
-/*                    5.M. LINKS AND BUTTONS
-/*==============================================================*/
-.life-section-links {
-    display: flex;
-    gap: 40px;
-}
-
-.life-section-links a {
-    background: transparent;
-    border: none;
-    padding: 0;
-    color: var(--text);
-    font-size: 16px;
-    font-weight: 300;
-    cursor: pointer;
-    transition: opacity 0.2s ease;
-    text-decoration: none;
-    /* Removes the default link underline */
-    color: inherit;
-    /* Prevents the text from turning standard link blue */
-    transition: all 0.3s ease;
-}
-
-.life-section-links a:hover {
-    opacity: 0.5;
-}
-
-.website-btn {
-    position: absolute;
-    right: 40px;
-}
-
-/*==============================================================
-/*                 5.N.  ARTIST WORK SECTION
-/*==============================================================*/
-
-.artist-work {
-    position: relative;
-
-    width: calc(100% + 80px);
-    margin-left: -40px;
-    margin-top: 60px;
-    overflow: hidden;
-}
-
-/*==============================================================
-/*              5.O.  IMAGE OR VID WORK EXAMPLE
-/*==============================================================*/
-.artistwork-bg {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    z-index: 2;
-    object-fit: cover;
-    display: block;
-}
-
-/*==============================================================
-/*                  5.P.  WORK TEXT OVERLAY
-/*==============================================================*/
-.artistwork-overlay {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    padding: 40px;
-
-    display: flex;
-    align-items: flex-end;
-    padding-bottom: 40px;
-}
-
-.work-info-grid {
-    width: 100%;
-
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 24px;
-}
-
-
-.work-info-item.left,
-.work-info-item.right {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-}
-
-.work-info-item.left {
-    overflow: visible;
-}
-
-.artistwork-name,
-.artistwork-title {
-    margin: 0;
-    line-height: 1;
-}
-
-/* "ARTISTIC APPROUCH" */
-.artistwork-name {
-    font-size: 45px;
-    font-weight: 300;
-    white-space: nowrap;
-}
-
-/* ARTIST NAME */
-.artistwork-title {
-    font-size: 45px;
-    font-weight: 500;
-    white-space: nowrap;
-
-
-}
-
-/*==============================================================
-/*                    5.Q.  WORK INFO SECTION
-/*==============================================================*/
-
-.artistwork-info-section {
-    margin-top: 80px;
-}
-
-
-.life-info-grid {
-    display: grid;
-
-    grid-template-columns: 520px 320px;
-
-    column-gap: 160px;
-
-    justify-content: start;
-
-    margin-bottom: 60px;
-}
-
-.life-info-item p {
-    margin: 0;
-
-    font-size: 25px;
-    font-weight: 300;
-    line-height: 1;
-
-    text-align: left;
-}
-
-/*==============================================================
-/*                  5.F.  ARTIST GALLERY SECTION
-/*==============================================================*/
-
-.artist-gallery-section {
-    margin-top: 120px;
-    margin-bottom: 120px;
-}
-
-.artist-gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    gap: 24px;
-}
-
-/* GRID ITEM */
-.artist-gallery-item {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    background: transparent;
-}
-
-/* GRID IMAGE */
-.artist-gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-}
-
-/*____________________________________________________________________________________________________
-
-/*                                        4. END OF ARTISTS PAGE
-/*____________________________________________________________________________________________________*/
-
-/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
-/*____________________________________________________________________________________________________
-
-/*                                        6.     EVENTS PAGE
-/*____________________________________________________________________________________________________*/
-
-/*==============================================================
-/*                     6.A.  EVENTS SECTION
-/*==============================================================*/
-.events-section {
-    width: 100%;
-    margin-top: 80px;
-    margin-bottom: 100px;
-    display: flex;
-    flex-direction: column;
-}
-
-/*==============================================================
-/*              6.B. "EVENTS CALLENDAR" HEADER
-/*==============================================================*/
-.events-header {
-    font-size: 40px;
-    font-weight: 500;
-    margin-bottom: 40px;
-    text-transform: uppercase;
-    letter-spacing: -1px;
-}
-
-/*==============================================================
-/*                       6.C.  FILTERS
-/*==============================================================*/
-
-/* FILTER DIV */
-.events-filters {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 60px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: 20px;
-}
-
-.mobile-more-filters {
-    display: none;
-}
-
-/* "FILTER" LABEL */
-.filter-label {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--text);
-    text-transform: uppercase;
-    margin-right: 10px;
-}
-
-/* FILTER BUTTONS */
-.filter-buttons {
-    display: flex;
-    gap: 16px;
-
-}
-
-/* FILTER BUTTONS */
-.custom-dropdown,
-.filter-btn {
-    width: 135px;
-    height: 30px;
-    box-sizing: border-box;
-}
-
-/* FILTER BUTTONS STYLE */
-.filter-btn {
-    background: transparent;
-    border: 1px solid #5DE62C;
-    color: var(--text);
-    border-radius: 0;
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    font-weight: 400;
-    cursor: pointer;
-    text-transform: uppercase;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-}
-
-/* FILTER BUTTONS ON HOVER */
-.filter-btn:hover,
-.filter-btn.active {
-    background: #5DE62C;
-    color: #000;
-    font-weight: 600;
-}
-
-/*==============================================================
-/*          6.D.  CUSTOM DROPDOWN MENU FOR THE FILTER
-/*==============================================================*/
-
-.custom-dropdown {
-    position: relative;
-
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    text-transform: uppercase;
-    user-select: none;
-}
-
-/* Container Box */
-.dropdown-trigger {
-    width: 100%;
-    height: 100%;
-    border: 1px solid #5DE62C;
-    color: var(--text);
-    display: flex;
-    align-items: center;
-    padding: 0 45px 0 15px;
-    cursor: pointer;
-    box-sizing: border-box;
-    background: transparent;
-}
-
-
-.custom-dropdown::after {
-    content: "▼";
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 38px;
-    height: 100%;
-    background: #5DE62C;
-    color: #000;
-    font-size: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    pointer-events: none;
-
-}
-
-/* The actual Options Menu Menu */
-.dropdown-menu {
-    position: absolute;
-    top: calc(100% + 4px);
-    left: 0;
-    width: 100%;
-    background: #000000;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    display: none;
-    z-index: 100;
-    box-sizing: border-box;
-}
-
-/* Shows the menu when open */
-.custom-dropdown.open .dropdown-menu {
-    display: block;
-}
-
-/* Individual list options */
-.dropdown-option {
-    padding: 12px 15px;
-    color: var(--text);
-    cursor: pointer;
-    transition: all 0.2s ease;
-    text-align: left;
-}
-
-/* Highlighted state on hover */
-.dropdown-option:hover {
-    background: #111111;
-    color: #5DE62C;
-}
-
-/* Currently active option */
-.dropdown-option.active {
-    color: #5DE62C;
-    font-weight: 600;
-}
-
-/*==============================================================
-/*                  6.E.  CALENDAR GRID
-/*==============================================================*/
-
-.calendar-container {
-    display: flex;
-    flex-direction: column;
-    gap: 80px;
-}
-
-/* 2-Column layout: Month on left, Events on right */
-.month-group {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 40px;
-    align-items: start;
-}
-
-.month-sidebar {
-    display: flex;
-    justify-content: center;
-    align-items: start;
-    transform: translateY(0);
-    transition: margin-top 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-
-}
-
-.date-block {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.date-year {
-    font-size: 45px;
-    font-weight: 300;
-    letter-spacing: 2px;
-    opacity: 1;
-    margin-bottom: 2px;
-}
-
-.date-month {
-    font-size: 45px;
-    font-weight: 700;
-
-    letter-spacing: 1px;
-    color: var(--text);
-}
-
-/* The actual events grid (3 items per row) */
-.events-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-}
-
-/*==============================================================
-/*                  6.F.  INDIVIDUAL EVENT CARD
-/*==============================================================*/
-
-.event-card {
-    display: flex;
-    gap: 15px;
-    height: 100%;
-    transition: transform 0.3s ease;
-}
-
-.event-card:hover .event-line {
-    background-color: #5DE62C;
-    opacity: 1;
-}
-
-/* The vertical line */
-.event-line {
-    width: 2px;
-    background-color: #5DE62C;
-    opacity: 0.5;
-    flex-shrink: 0;
-    transition: all 0.3s ease;
-}
-
-/* Content Stack */
-.event-content {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-.e-days {
-    font-size: 14px;
-    font-weight: 300;
-    opacity: 0.6;
-    text-transform: uppercase;
-    margin-bottom: 5px;
-}
-
-.e-date {
-    font-size: 32px;
-    font-weight: 600;
-    line-height: 1;
-    margin-bottom: 20px;
-}
-
-.e-type {
-    font-size: 14px;
-    color: #5DE62C;
-    text-transform: uppercase;
-    font-weight: 300;
-    margin-bottom: 20px;
-}
-
-.e-image {
-    width: 100%;
-    height: 180px;
-    /* Forces all images to be the exact same height */
-    object-fit: cover;
-    object-position: center;
-    margin-bottom: 20px;
-    display: block;
-    opacity: 0.8;
-    transition: all 0.4s ease;
-}
-
-/* Brings the color and brightness back when you hover over the event */
-.event-card:hover .e-image {
-
-    opacity: 1;
-}
-
-.e-artist {
-    font-size: 14px;
-    font-weight: 300;
-    opacity: 1;
-    text-transform: uppercase;
-    margin-bottom: 5px;
-}
-
-.e-name {
-    font-size: 32px;
-    font-weight: 500;
-    margin: 0 0 30px 0;
-}
-
-.e-caption {
-    font-size: 14px;
-    font-weight: 300;
-    line-height: 1.5;
-    opacity: 0.8;
-    margin: 0;
-}
-
-/*____________________________________________________________________________________________________
-
-/*                                         END OF EVENTS PAGE
-/*____________________________________________________________________________________________________*/
-
-/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
-/*____________________________________________________________________________________________________
-
-/*                                        7.  CONTACT US PAGE
-/*____________________________________________________________________________________________________*/
-/*==============================================================
-/*              7.A.  CONTACT US SECTION SETTINGS
-/*==============================================================*/
-.contact-section {
-    min-height: 80vh;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    padding-top: 80px;
-    padding-bottom: 80px;
-}
-
-/*==============================================================
-/*                   7.B.  "CONTACT US" TITLE
-/*==============================================================*/
-.contact-title {
-    margin: 0;
-
-    font-size: 45px;
-    font-weight: 300;
-
-    text-align: center;
-}
-
-/*==============================================================
-/*                   7.B.  "ATRACE TEAM" HEADER
-/*==============================================================*/
-.contact-subtitle {
-    margin-top: 50px;
-    margin-bottom: 50px;
-
-    font-size: 30px;
-    font-weight: 300;
-
-    text-transform: uppercase;
-}
-
-/*==============================================================
-/*                         7.C. THE CARD 
-/*==============================================================*/
-
-.contact-card {
-    width: 100%;
-    max-width: 320px;
-
-    background: white;
-    border-radius: 8px;
-    color: black;
-
-    padding: 24px;
-
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-
-/*==============================================================
-/*                      7.D. CONTACT FORM
-/*==============================================================*/
-/* LAYOUT */
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-/* FIELDS LABEL */
-.form-group label {
-    font-size: 14px;
-    font-weight: 500;
-}
-
-/* FORM FIELDS */
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #d0d0d0;
-    border-radius: 8px;
-    font-family: 'Inter';
-    font-size: 14px;
-    box-sizing: border-box;
-    resize: vertical;
-}
-
-/* FORM FIELDS WHEN ACTIVE*/
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: #5DE62C;
-}
-
-/* SUBMIT BUTTON */
-.submit-btn {
-    width: 100%;
-    padding: 14px 0;
-    background: #000;
-    border: 1px solid #000;
-    border-radius: 8px;
-    color: #ffffff;
-    font-size: 14px;
-    font-weight: 300;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-/* SUBMIT BUTTON ON HOVER */
-.submit-btn:hover {
-    background: #5DE62C;
-    border-color: #5DE62C;
-    color: #000000;
-}
-
-/*____________________________________________________________________________________________________
-
-/*                                         END OF CONTACT US
-/*____________________________________________________________________________________________________*/
-
-/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
-/*____________________________________________________________________________________________________
-
-/*                                        8.  GALLARY PAGE
-/*____________________________________________________________________________________________________*/
-
-/*==============================================================
-/*                    8.A.  SECTION SETTINGS
-/*==============================================================*/
-.gallery-section {
-    margin-top: 120px;
-    margin-bottom: 120px;
-}
-
-/*==============================================================
-/*                  8.B. "OUR GALLERY" HEADER
-/*==============================================================*/
-.gallery-header {
-    font-size: 40px;
-    font-weight: 500;
-    margin-bottom: 100px;
-    text-transform: uppercase;
-    letter-spacing: -1px;
-}
-
-/*==============================================================
-/*          8.C.  ARTIST NAME FOR EACH GALLERY (HEADER)
-/*==============================================================*/
-.gallery-section-heading {
-    margin-bottom: 60px;
-}
-
-.gallery-artist-title {
-    margin: 0;
-    line-height: 1;
-    font-size: 45px;
-    font-weight: 500;
-    white-space: nowrap;
-}
-
-/*==============================================================
-/*              8.D. IMAGES GRID LAYOUT AND SETTINGS
-/*==============================================================*/
-/* GRID LAYOUT */
-.gallery-grid {
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-
-    gap: 24px;
-    margin-bottom: 100px;
-}
-
-/* GRID ITEM */
-.gallery-item {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    /* keeps square cells */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    background: transparent;
-}
-
-/* GRID IMAGE */
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-}
-
-/*____________________________________________________________________________________________________
-
-/*                                         END OF GALLERY PAGE
-/*____________________________________________________________________________________________________*/
-
-/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
-
-
-/*mobile stuff*/
-
-
-/* --- Base Styles for Mobile Elements (Hidden on Desktop) --- */
-.burger-menu {
-    display: none;
-    background: transparent;
-    border: none;
-    color: var(--text);
-    cursor: pointer;
-    padding: 0;
-    margin: 0;
-    line-height: 0;
-}
-
-/* Sidebar Container - Slides in from the right */
-.mobile-sidebar {
-    position: fixed;
-    top: 0;
-    right: -150%;
-    /* Hidden off-screen initially */
-    width: 90vw;
-    height: 95vh;
-    background-color: #000000;
-    /* Assuming a dark theme, change if needed */
-    z-index: 9999;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 30px;
-    transition: right 0.4s ease-in-out;
-}
-
-/* When active, it slides into view */
-.mobile-sidebar.active {
-    right: 0px;
-}
-
-.sidebar-header {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    margin-bottom: 40px;
-    padding: 0;
-    gap: 20px;
-}
-
-.close-menu {
-    background: transparent;
-    border: none;
-    color: var(--text);
-    font-size: 40px;
-    cursor: pointer;
-    font-weight: 300;
-    right: 40px;
-}
-
-/* Sidebar Navigation Items */
-.sidebar-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    margin-top: -50px;
-
-    /* 👇 This creates the single long line */
-    border-left: 3px solid #5DE62C;
-
-    /* 👇 This adds breathing room between the line and the text */
-    padding-left: 15px;
-}
-
-/* Notice we target the <a> directly now, since we deleted .nav-item */
-.sidebar-nav a {
-    text-decoration: none;
-    color: var(--text);
-    font-size: 24px;
-    font-weight: 300;
-    transition: color 0.2s;
-}
-
-.sidebar-nav a:hover {
-    color: #5DE62C;
-}
-
-/* Sidebar Footer (Logo & Socials) */
-.sidebar-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 20px;
-}
-
-.sidebar-footer .socials {
-    display: flex;
-    gap: 15px;
-}
-
-
-
-
-@media (max-width: 850px) {
-
-    /* Hide the desktop navigation and auth links */
-    .nav,
-    .auth {
-        display: none;
-    }
-
-    /* Show the burger menu icon */
-    .burger-menu {
-        display: block;
-    }
-
-    body {
-        margin: 0;
-        padding: 10px;
-    }
-
-
-
-    .background-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0px;
-    }
-
-    .item.first,
-    .item.second,
-    .item.third,
-    .item.fourth,
-    .item.sixth,
-    .item.fifth {
-        display: none;
-    }
-
-    .home-section {
-        min-height: 25vh;
-    }
-
-    .home-section-overlay {
-        top: 66%;
-        transform: translateY(-50%);
-        align-items: center;
-
-    }
-
-    /* 3. Turn the grid into a single, compact column */
-    .home-section-overlay-grid {
-        display: flex;
-        flex-direction: column;
-        width: 75%;
-        padding: 0 20%;
-        gap: 0px;
-
-    }
-
-    .home-section-overlay-grid-item.middle {
-        display: none;
-    }
-
-    /* 5. Ensure text aligns left inside our centered column */
-    .home-section-overlay-grid-item.left,
-    .home-section-overlay-grid-item.right {
-        text-align: left;
-        padding-top: 0;
-    }
-
-    .home-section-overlay-grid-btn {
-        width: clamp(50%, 5vw, 60%);
-        font-size: 9px;
-        align-self: center;
-        padding: 5px 0;
-    }
-
-    .home-section-overlay-grid-item.right p {
-        margin-bottom: 10px;
-
-    }
-
-    .home-section-overlay-grid-item.right p {
-        font-size: clamp(10px, 2vw, 25px);
-    }
-
-    .home-section-overlay-quote-part-1,
-    .home-section-overlay-quote-part-2 {
-        font-size: clamp(24px, 1vw, 65px);
-
-    }
-
-    /*------------------------------------------------------------------*/
-    .future-event-artist p {
-        font-size: clamp(13px, 2vw, 25px);
-
-    }
-
-    .future-event-artist-title,
-    .future-event-artist-name {
-        font-size: clamp(14px, 2vw, 25px);
-    }
-
-    .future-event-artist-title {
-        margin-bottom: 10px;
-        padding: 0;
-    }
-
-    .future-event-section-heading {
-        margin: 0;
-        padding: 0;
-    }
-
-    .future-event-content-item p {
-        font-size: clamp(12px, 2vw, 25px);
-        margin: 0;
-        margin-bottom: 10px;
-        width: 75%;
-    }
-
-
-    .future-event-section {
-        min-height: 25vh;
-        overflow-x: hidden;
-    }
-
-    /* 1. Convert grid to a single column */
-    .future-event-grid {
-
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-
-        gap: 0px;
-    }
-
-    /* 2. Tell the LEFT container to only hold the text */
-    .future-event-item.left {
-        display: flex;
-        flex-direction: column;
-        padding-bottom: 0;
-        width: 75%;
-        padding: 0 20%;
-        margin: 0;
-    }
-
-    .future-event-item.right {
-        width: 100%;
-
-        margin: 0;
-        display: flex;
-        justify-content: center;
-        padding: 0;
-    }
-
-    .future-event-section-links {
-        width: 75%;
-        margin: 10px 0;
-        padding: 0;
-
-
-    }
-
-    .future-event-section-links a {
-        font-size: 10px;
-    }
-
-    .future-event-item.right img {
-
-        padding: 0;
-        margin: 0;
-        width: 100%;
-        max-width: 700px;
-
-        height: auto;
-    }
-
-    /*---------------------------------------------------------*/
-
-    .about-section {
-        min-height: 25vh;
-        margin-top: 10px;
-        margin-bottom: 15px;
-        overflow-x: hidden;
-    }
-
-    /* "ABOUT ATRACE" */
-    .about-heading {
-        font-size: clamp(14px, 1vw, 65px);
-
-        margin-bottom: 15px;
-
-    }
-
-    .about-section-grid {
-        display: flex;
-        flex-direction: column;
-        width: 75%;
-        padding: 0 20%;
-        gap: 0px;
-        margin: 0;
-    }
-
-    .about-section-grid-item {
-        display: flex;
-        flex-direction: column;
-        margin: 0;
-        padding: 0;
-    }
-
-    /* THE ABOUT PARAGRAPH */
-    .about-text {
-        font-size: clamp(11px, 2vw, 25px);
-        margin-top: 13px;
-        width: 75%;
-
-    }
-
-
-    .about-section-grid-item.left,
-    .about-section-grid-item.right {
-        display: flex;
-        flex-direction: column;
-        justify-content: start;
-        margin: 0;
-        padding: 0;
-
-    }
-
-    /* =========================================================
-       HERO CAROUSEL MOBILE OVERRIDES
-       ========================================================= */
-    /* 1. Reset the main section to flow normally */
-    .hero-carousel-section {
-        height: auto;
-        /* Kills the fixed 800px height */
-        padding: 40px 0px;
-        /* Gives breathing room top and bottom */
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        margin: 0;
-
-        /* Removes the desktop bleed offset */
-        width: 100%;
-        overflow-x: hidden;
-    }
-
-    /* 2. Top Header ("EXPERIENCE THE COLLABORATION") */
-    .hero-corner.top-left {
-        position: relative;
-        /* Frees it from the corner */
-        top: auto;
-        left: auto;
-        text-align: center;
-        margin-bottom: 50px;
-    }
-
-    .hero-corner.top-left h2 {
-        margin-top: 0;
-        font-size: clamp(18px, 1vw, 65px);
-    }
-
-    /* 3. The Carousel Container */
-    .carousel-container {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        /* Stack the items vertically */
-        height: auto;
-        margin-top: 0;
-        margin-bottom: 50px;
-        gap: 80px;
-        /* Space between each stacked track */
-        overflow-x: hidden;
-    }
-
-    /* 4. Neutralize the JavaScript positional classes */
-    /* By grouping all these JS classes, we force them to ignore the JS on mobile */
-    .carousel-item,
-    .carousel-item.pos-center,
-    .carousel-item.pos-left-1,
-    .carousel-item.pos-right-1,
-    .carousel-item.pos-left-2,
-    .carousel-item.pos-right-2,
-    .carousel-item.pos-hidden-left,
-    .carousel-item.pos-hidden-right {
-        position: relative;
-        left: auto !important;
-        top: auto !important;
-        transform: none !important;
-        /* Kills the JS scaling/translation */
-        opacity: 1 !important;
-        /* Makes everything fully visible */
-        z-index: 1;
-    }
-
-    /* 5. Force the info blocks to show permanently */
-    .media-info {
-        position: relative;
-        top: auto;
-        left: auto;
-        transform: none;
-        opacity: 1;
-        /* Reveal the hidden text */
-        pointer-events: auto;
-        width: 100%;
-        margin-top: 20px;
-    }
-
-    /* 6. Hide the Navigation Arrows */
-    .nav-btn {
-        display: none;
-    }
-
-    /* 7. Ensure SVG shapes are clickable and scaled well */
-    .media-svg-btn {
-        pointer-events: auto;
-        /* Ensures all SVGs can be clicked */
-        width: 100%;
-        max-width: 220px;
-        /* Shrinks the massive SVGs for small screens */
-        height: auto;
-        margin: 0 auto;
-    }
-
-    /* 8. Bottom Links (Centered Row) */
-    .hero-corner.bottom-left {
-        position: relative;
-        /* Frees it from the bottom left corner */
-        bottom: auto;
-        left: auto;
-        display: flex;
-        flex-direction: row;
-        /* Keep them inline */
-        flex-wrap: wrap;
-        /* Let them wrap to the next line if screen is tiny */
-        justify-content: center;
-        /* Center them perfectly */
-        gap: 20px;
-        padding: 0;
-        margin: 0;
-    }
-
-    .hero-corner.bottom-left a {
-        padding: 0;
-        margin: 0;
-        font-size: 14px;
-        /* Slightly smaller font for mobile */
-    }
-
-    /*-------------------------------------------------------------------*/
-    .home-hero-section {
-        width: 100%;
-        margin: 100px 0;
-        overflow: hidden;
-    }
-
-    .home-hero-section-bg {
-        width: 100%;
-        height: 50vh;
-    }
-
-    .home-hero-section-overlay {
-        position: absolute;
-        inset: 0;
-        padding: 40px;
-        display: flex;
-        align-items: flex-end;
-        padding-bottom: 30px;
-    }
-
-
-    .home-hero-section-overlay-grid {
-        display: flex;
-        flex-direction: column;
-        width: 75%;
-        padding: 0 20%;
-        gap: 0px;
-
-    }
-
-
-    .home-hero-section-overlay-grid-item.left {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        overflow: visible;
-
-    }
-
-    .home-artist-quote-part-1,
-    .home-artist-quote-part-2 {
-        margin: 0;
-        line-height: 1.2;
-        font-size: clamp(18px, 1vw, 65px);
-    }
-
-
-
-    .home-hero-section-play-btn svg {
-
-        scale: 0.5;
-    }
-
-    /*-----------------------------------------------------------------*/
-
-    .footer {
-        /* 1. Reset the massive desktop margins and match the mobile 10px body padding */
-        margin-left: -10px;
-        margin-right: -10px;
-        width: calc(100% + 20px);
-
-        /* 2. Reset the desktop padding to something mobile-friendly */
-        padding: 20px 10px;
-
-        /* 3. The Magic Property: Forces padding to stay INSIDE the width */
-        box-sizing: border-box;
-
-        min-height: 25vh;
-        margin-bottom: -40px;
-        border-top: 1px solid white;
-        background: #000000;
-        color: #ffffff;
-    }
-
-
-
-    .footer * {
-        min-width: 0;
-        overflow-x: hidden;
-    }
-
-    .footer-grid {
-        max-width: 100%;
-        width: 100%;
-        display: grid;
-
-        grid-template-columns:
-            2fr 1fr 1fr 1.0fr;
-
-        gap: 10px;
-        overflow-x: hidden;
-    }
-
-    .footer-column {
-        display: flex;
-        flex-direction: column;
-        padding: 0;
-        margin: 0;
-        padding-top: 10px;
-    }
-
-    .footer-column p {
-        font-size: 9px;
-        font-weight: 600;
-
-        margin: 0 0 24px 0;
-        padding: 0;
-
-        letter-spacing: 0.05em;
-    }
-
-    .footer-column a {
-        font-size: 9px;
-        margin-bottom: 14px;
-    }
-
-    .brand-column {
-        justify-content: left;
-        padding: 0;
-        margin: 0;
-
-    }
-
-    .footer-logo {
-        margin-bottom: 10px;
-        scale: 0.7;
-    }
-
-    .socials {
-        display: flex;
-        gap: 18px;
-    }
-
-    .socials a {
-        align-items: center;
-        justify-content: center;
-        width: 36px;
-        height: 36px;
-        scale: 0.6;
-    }
-
-    /*===================================================================================*/
-    .events-header {
-        text-align: center;
-        font-size: clamp(25px, 1vw, 65px);
-    }
-
-    /* 1. Filters in a single scrollable row */
-    .events-filters {
-        flex-direction: row;
-        flex-wrap: nowrap;
-        align-items: center;
-        -ms-overflow-style: none;
-        /* Hide scrollbar for IE/Edge */
-        scrollbar-width: none;
-        /* Hide scrollbar for Firefox */
-        padding-bottom: 20px;
-    }
-
-    .events-filters::-webkit-scrollbar {
-        display: none;
-        /* Hide scrollbar for Chrome/Safari */
-    }
-
-    .filter-buttons {
-        display: flex;
-        flex-direction: row;
-        gap: 5px;
-
-    }
-
-    /* Adjust sizing so they fit the text inside instead of a fixed width */
-    .custom-dropdown,
-    .filter-btn {
-        width: auto;
-        min-width: 80px;
-        padding: 0 5px;
-        white-space: nowrap;
-        font-size: 9px;
-
-    }
-
-    .filter-btn {
-        margin-right: 6px;
-    }
-
-    .desktop-filters {
-        display: none;
-    }
-
-    .mobile-more-filters {
-        display: block;
-    }
-
-    /* 2. Month Stacked Vertically */
-    .month-group {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .month-sidebar {
-        margin-top: 0 !important;
-        justify-content: center;
-    }
-
-    .date-block {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    /* 3. Events Grid & Centered First Card */
-    .events-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-    }
-
-    .event-card.featured-mobile {
-        grid-column: span 2;
-        justify-self: center;
-        /* Centers the card horizontally */
-        width: 100%;
-        max-width: 300px;
-        /* Stops it from stretching too wide */
-    }
-
-    .event-card.featured-mobile .e-image {
-        height: 220px;
-    }
-
-    .e-image {
-        width: 90%;
-        height: auto;
-
-    }
-
-    .filter-label {
-        font-size: 14px;
-        margin-right: 10px;
-    }
-
-
-
-    .date-year {
-        font-size: 18px;
-        font-weight: 300;
-
-    }
-
-    .date-month {
-        font-size: 18px;
-        margin-bottom: 20px;
-    }
-
-
-    .e-days {
-        font-size: 7px;
-    }
-
-    .e-date {
-        font-size: 16px;
-        margin-bottom: 10px;
-    }
-
-    .e-type {
-        font-size: 7px;
-
-    }
-
-
-    .e-artist {
-        font-size: 7px;
-    }
-
-    .e-name {
-        font-size: 16px;
-        margin: 0 0 10px 0;
-    }
-
-    .e-caption {
-        font-size: 7px;
-
-    }
-
+// --- SEARCH BAR ---
+const searchContainer = document.querySelector(".search-container");
+const searchInput = document.getElementById("searchInput");
+
+// Only run this if the search elements actually exist on the page
+if (searchInput && searchContainer) {
+    searchInput.addEventListener("focus", () => {
+        searchContainer.classList.add("active");
+    });
+
+    searchInput.addEventListener("blur", () => {
+        if (searchInput.value === "") {
+            searchContainer.classList.remove("active");
+        }
+    });
+}
+
+// Toggle theme (for later use)
+function toggleTheme() {
+    document.body.classList.toggle("light");
+    document.body.classList.toggle("dark");
+}
+
+// --- CAROUSEL LOGIC ---
+document.addEventListener("DOMContentLoaded", () => {
+    const items = document.querySelectorAll(".carousel-item");
+    if (items.length === 0) return; // Guard: Stop if no carousel on this page
+
+    const totalItems = items.length;
+    let currentIndex = 0;
+
+    function updateCarousel() {
+        items.forEach((item, index) => {
+            item.className = "carousel-item";
+            let diff = index - currentIndex;
+
+            if (diff > Math.floor(totalItems / 2)) {
+                diff -= totalItems;
+            } else if (diff < -Math.floor(totalItems / 2)) {
+                diff += totalItems;
+            }
+
+            if (diff === 0) item.classList.add("pos-center");
+            else if (diff === -1) item.classList.add("pos-left-1");
+            else if (diff === 1) item.classList.add("pos-right-1");
+            else if (diff === -2) item.classList.add("pos-left-2");
+            else if (diff === 2) item.classList.add("pos-right-2");
+            else if (diff < -2) item.classList.add("pos-hidden-left");
+            else if (diff > 2) item.classList.add("pos-hidden-right");
+        });
+    }
+
+    document.addEventListener("click", (e) => {
+        if (e.target.closest(".prev-btn")) {
+            currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+            updateCarousel();
+        } else if (e.target.closest(".next-btn")) {
+            currentIndex = (currentIndex + 1) % totalItems;
+            updateCarousel();
+        }
+    });
+
+    updateCarousel();
+});
+
+// --- EVENTS PAGE LOGIC ---
+document.addEventListener("DOMContentLoaded", () => {
+    const categoryButtons = document.querySelectorAll(".filter-btn");
+    const monthGroups = document.querySelectorAll(".month-group");
+
+    // Month Dropdown
+    const monthDropdown = document.getElementById("monthDropdown");
+    const monthTrigger = monthDropdown.querySelector(".dropdown-trigger");
+    const monthOptions = monthDropdown.querySelectorAll(".dropdown-option");
+
+    // More Filters Dropdown (Mobile)
+    const moreDropdown = document.getElementById("moreFiltersDropdown");
+    const moreTrigger = moreDropdown.querySelector(".dropdown-trigger");
+    const moreOptions = moreDropdown.querySelectorAll(".dropdown-option");
+
+    let activeMonth = "all";
+    let activeCategory = "all";
+
+    function positionSidebars() {
+        // Disable dynamic sidebar pushing on mobile
+        if (window.innerWidth <= 850) {
+            monthGroups.forEach(group => {
+                const sidebar = group.querySelector(".month-sidebar");
+                if (sidebar) sidebar.style.marginTop = "0px";
+            });
+            return;
+        }
+
+        requestAnimationFrame(() => {
+            monthGroups.forEach(group => {
+                if (group.style.display === "none") return;
+                const grid = group.querySelector(".events-grid");
+                const sidebar = group.querySelector(".month-sidebar");
+                if (!grid || !sidebar) return;
+
+                const visibleCards = Array.from(grid.querySelectorAll(".event-card")).filter(
+                    card => card.style.display !== "none"
+                );
+
+                if (visibleCards.length === 0) return;
+
+                sidebar.style.marginTop = "0px";
+                let firstRowMaxHeight = 0;
+                const itemsInFirstRow = Math.min(visibleCards.length, 3);
+
+                for (let i = 0; i < itemsInFirstRow; i++) {
+                    const cardHeight = visibleCards[i].offsetHeight;
+                    if (cardHeight > firstRowMaxHeight) {
+                        firstRowMaxHeight = cardHeight;
+                    }
+                }
+
+                const sidebarHeight = sidebar.offsetHeight;
+                const targetOffset = (firstRowMaxHeight - sidebarHeight) / 2;
+                sidebar.style.marginTop = `${Math.max(0, targetOffset)}px`;
+            });
+        });
+    }
+
+    function applyFilters() {
+        monthGroups.forEach(group => {
+            const groupMonth = group.getAttribute("data-month");
+            let hasVisibleEvents = false;
+            let firstVisibleFound = false; // Tracks the first card for the mobile layout
+            const events = group.querySelectorAll(".event-card");
+
+            events.forEach(event => {
+                const eventCategory = event.getAttribute("data-category");
+                const matchesMonth = activeMonth === "all" || groupMonth === activeMonth;
+                const matchesCategory = activeCategory === "all" || eventCategory === activeCategory;
+
+                // Reset mobile big-card class
+                event.classList.remove("featured-mobile");
+
+                if (matchesMonth && matchesCategory) {
+                    event.style.display = "flex";
+                    hasVisibleEvents = true;
+
+                    // Assign the big card class to the very first visible event
+                    if (!firstVisibleFound) {
+                        event.classList.add("featured-mobile");
+                        firstVisibleFound = true;
+                    }
+                } else {
+                    event.style.display = "none";
+                }
+            });
+
+            group.style.display = hasVisibleEvents ? "flex" : "none";
+            // Desktop resets to grid via CSS, but inline style flex overrides it if we aren't careful.
+            // Better to remove the inline display and let CSS handle the display type, just toggle a hidden class.
+            // For now, grid on desktop and flex on mobile works if we set it properly:
+            if (hasVisibleEvents) {
+                group.style.display = window.innerWidth <= 850 ? "flex" : "grid";
+            }
+        });
+
+        positionSidebars();
+    }
+
+    // Generic Dropdown Logic Helper
+    function setupDropdown(dropdownElem, triggerElem, optionsNodeList, type) {
+        if (!dropdownElem) return;
+        triggerElem.addEventListener("click", (e) => {
+            e.stopPropagation();
+
+            // Close the other dropdown if open
+            if (type === 'month' && moreDropdown) moreDropdown.classList.remove("open");
+            if (type === 'more' && monthDropdown) monthDropdown.classList.remove("open");
+
+            dropdownElem.classList.toggle("open");
+        });
+
+        optionsNodeList.forEach(option => {
+            option.addEventListener("click", () => {
+                optionsNodeList.forEach(opt => opt.classList.remove("active"));
+                option.classList.add("active");
+                triggerElem.textContent = option.textContent;
+
+                if (type === 'month') {
+                    activeMonth = option.getAttribute("data-value");
+                } else if (type === 'more') {
+                    activeCategory = option.getAttribute("data-value");
+                    // Remove active state from standard category buttons
+                    categoryButtons.forEach(b => b.classList.remove("active"));
+                }
+
+                dropdownElem.classList.remove("open");
+                applyFilters();
+            });
+        });
+    }
+
+    setupDropdown(monthDropdown, monthTrigger, monthOptions, 'month');
+    setupDropdown(moreDropdown, moreTrigger, moreOptions, 'more');
+
+    // Close dropdowns on outside click
+    document.addEventListener("click", (e) => {
+        if (monthDropdown && !monthDropdown.contains(e.target)) monthDropdown.classList.remove("open");
+        if (moreDropdown && !moreDropdown.contains(e.target)) moreDropdown.classList.remove("open");
+    });
+
+    // Standard Category Buttons (All, Concert, etc.)
+    categoryButtons.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            categoryButtons.forEach(b => b.classList.remove("active"));
+            e.target.classList.add("active");
+            activeCategory = e.target.getAttribute("data-filter");
+
+            // Reset "More" dropdown UI if a standard button is clicked
+            if (moreDropdown) {
+                moreOptions.forEach(opt => opt.classList.remove("active"));
+                moreTrigger.textContent = "More";
+            }
+
+            applyFilters();
+        });
+    });
+
+    window.addEventListener("resize", () => {
+        applyFilters(); // Re-apply to fix group.style.display (grid vs flex)
+    });
+
+    applyFilters();
+});
+
+// --- ARTISTS PAGE LOGIC ---
+document.addEventListener("DOMContentLoaded", () => {
+    const artistGroup = document.querySelector(".artist-group");
+    if (!artistGroup) return; // Guard: Stop if not on the Artists page
+
+    const categoryButtons = document.querySelectorAll(".filter-btn");
+    const sidebar = document.querySelector(".artist-sidebar");
+    const artistsGrid = document.querySelector(".artists-grid");
+    const artistCards = document.querySelectorAll(".artist-card");
+
+    let activeCategory = "all";
+
+    function positionSidebars() {
+        requestAnimationFrame(() => {
+            if (artistGroup.style.display === "none") return;
+
+            const visibleCards = Array.from(artistCards).filter(card => card.style.display !== "none");
+            if (visibleCards.length === 0) return;
+
+            sidebar.style.marginTop = "0px";
+
+            let firstRowMaxHeight = 0;
+            const itemsInFirstRow = Math.min(visibleCards.length, 3);
+
+            for (let i = 0; i < itemsInFirstRow; i++) {
+                const cardHeight = visibleCards[i].offsetHeight;
+                if (cardHeight > firstRowMaxHeight) {
+                    firstRowMaxHeight = cardHeight;
+                }
+            }
+
+            const sidebarHeight = sidebar.offsetHeight;
+            const targetOffset = (firstRowMaxHeight - sidebarHeight) / 2;
+
+            sidebar.style.marginTop = `${Math.max(0, targetOffset)}px`;
+        });
+    }
+
+    function applyFilters() {
+        let hasVisibleArtists = false;
+
+        artistCards.forEach(card => {
+            const artistCategory = card.getAttribute("data-category");
+            const matchesCategory = activeCategory === "all" || artistCategory === activeCategory;
+
+            if (matchesCategory) {
+                card.style.display = "flex";
+                hasVisibleArtists = true;
+            } else {
+                card.style.display = "none";
+            }
+        });
+
+        if (hasVisibleArtists) {
+            artistGroup.style.display = "grid";
+        } else {
+            artistGroup.style.display = "none";
+        }
+        positionSidebars();
+    }
+
+    categoryButtons.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            categoryButtons.forEach(b => b.classList.remove("active"));
+            e.target.classList.add("active");
+            activeCategory = e.target.getAttribute("data-filter");
+            applyFilters();
+        });
+    });
+
+    window.addEventListener("resize", positionSidebars);
+    applyFilters();
+});
+
+// --- MOBILE MENU LOGIC ---
+const burgerBtn = document.getElementById("burgerBtn");
+const closeBtn = document.getElementById("closeBtn");
+const mobileSidebar = document.getElementById("mobileSidebar");
+
+// Guard: Only run if the menu elements exist
+if (burgerBtn && closeBtn && mobileSidebar) {
+    burgerBtn.addEventListener("click", () => {
+        mobileSidebar.classList.add("active");
+        document.body.style.overflow = "hidden";
+    });
+
+    closeBtn.addEventListener("click", () => {
+        mobileSidebar.classList.remove("active");
+        document.body.style.overflow = "auto";
+    });
 }
