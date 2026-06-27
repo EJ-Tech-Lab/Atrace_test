@@ -2356,7 +2356,7 @@ body {
 
     .future-event-item.right {
         width: 100%;
-        /* 👈 Image container goes almost edge-to-edge */
+
         margin: 0;
         display: flex;
         justify-content: center;
@@ -2366,6 +2366,7 @@ body {
     .future-event-section-links {
         width: 75%;
         margin-top: 10px;
+        margin-bottom: 10px;
 
     }
 
@@ -2383,7 +2384,8 @@ body {
         height: auto;
     }
 
-    .footer {
+    .footer,
+    .future-event-item.right {
         display: none;
     }
 
