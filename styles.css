@@ -2225,7 +2225,7 @@ body {
         padding: 10px;
     }
 
-    .home-hero-section,
+
     .footer {
         display: none;
     }
@@ -2556,5 +2556,59 @@ body {
         margin: 0;
         font-size: 14px;
         /* Slightly smaller font for mobile */
+    }
+
+    /*-------------------------------------------------------------------*/
+    .home-hero-section {
+        width: 100%;
+        margin: 100px 0;
+        overflow: hidden;
+    }
+
+    .home-hero-section-bg {
+        width: 100%;
+        height: 50vh;
+    }
+
+    .home-hero-section-overlay {
+        position: absolute;
+        inset: 0;
+        padding: 40px;
+        display: flex;
+        align-items: flex-end;
+        padding-bottom: 30px;
+    }
+
+
+    .home-hero-section-overlay-grid {
+        display: flex;
+        flex-direction: column;
+        width: 75%;
+        padding: 0 20%;
+        gap: 0px;
+
+    }
+
+
+    .home-hero-section-overlay-grid-item.left {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        overflow: visible;
+
+    }
+
+    .home-artist-quote-part-1,
+    .home-artist-quote-part-2 {
+        margin: 0;
+        line-height: 1.2;
+        font-size: clamp(18px, 1vw, 65px);
+    }
+
+
+
+    .home-hero-section-play-btn svg {
+
+        scale: 0.5;
     }
 }
