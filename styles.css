@@ -31,7 +31,7 @@ body {
     color: var(--text);
     display: flex;
     flex-direction: column;
-
+    overflow-x: hidden;
 }
 
 /*____________________________________________________________________________________________________
@@ -955,91 +955,6 @@ body {
 
 .home-hero-section-play-btn svg {
     display: block;
-}
-
-@media (max-width: 850px) {
-    .background-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0px;
-    }
-
-    .item.first,
-    .item.second,
-    .item.third,
-    .item.fourth,
-    .item.sixth,
-    .item.fifth {
-        display: none;
-    }
-
-    .home-section {
-
-        min-height: 25vh;
-    }
-
-
-    .home-section {
-        min-height: 25vh;
-        margin-left: -30px;
-        margin-right: -30px;
-        /* Restores full height to stabilize the layout */
-    }
-
-    /* 2. Dynamically center the overlay in the absolute middle of the page */
-    .home-section-overlay {
-
-        /* Removes the bottom 20% offset */
-        top: 66%;
-        transform: translateY(-50%);
-        /* Perfectly centers it vertically */
-        align-items: center;
-        /* Centers the inner content */
-    }
-
-    /* 3. Turn the grid into a single, compact column */
-    .home-section-overlay-grid {
-        display: flex;
-        flex-direction: column;
-        width: 75%;
-        /* Keeps it from touching the screen edges */
-
-
-        /* Gives you that compact "30% width" feel safely */
-        margin: 0 15%;
-        /* Centers the column horizontally */
-        gap: 0px;
-
-    }
-
-    .home-section-overlay-grid-item.middle {
-        display: none;
-    }
-
-    /* 5. Ensure text aligns left inside our centered column */
-    .home-section-overlay-grid-item.left,
-    .home-section-overlay-grid-item.right {
-        text-align: left;
-        padding-top: 0;
-
-        /* Resets the 19px padding from desktop */
-    }
-
-    .home-section-overlay-grid-btn {
-        width: clamp(40%, 5vw, 60%);
-        font-size: 12px;
-        align-self: center;
-        padding: 2px 0;
-    }
-
-    .home-section-overlay-grid-item.right p {
-        font-size: clamp(13px, 2vw, 25px);
-    }
-
-    .home-section-overlay-quote-part-1,
-    .home-section-overlay-quote-part-2 {
-        font-size: clamp(30px, 4vw, 65px);
-
-    }
 }
 
 /*____________________________________________________________________________________________________
@@ -2292,7 +2207,9 @@ body {
     gap: 15px;
 }
 
-/* --- THE MEDIA QUERY (The Mobile Magic) --- */
+
+
+
 @media (max-width: 850px) {
 
     /* Hide the desktop navigation and auth links */
@@ -2306,5 +2223,145 @@ body {
         display: block;
     }
 
+    body {
+        margin: 0;
+        padding: 10px;
+    }
+
+    .hero-carousel-section,
+    .home-hero-section,
+    .about-section,
+    .future-event-section {
+        display: none;
+    }
+
+    .background-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0px;
+    }
+
+    .item.first,
+    .item.second,
+    .item.third,
+    .item.fourth,
+    .item.sixth,
+    .item.fifth {
+        display: none;
+    }
+
+    .home-section {
+        min-height: 25vh;
+
+
+    }
+
+
+    .home-section-overlay {
+
+        /* Removes the bottom 20% offset */
+        top: 66%;
+        transform: translateY(-50%);
+        /* Perfectly centers it vertically */
+        align-items: center;
+        /* Centers the inner content */
+    }
+
+    /* 3. Turn the grid into a single, compact column */
+    .home-section-overlay-grid {
+        display: flex;
+        flex-direction: column;
+        width: 75%;
+        padding: 0 20%;
+        gap: 0px;
+
+    }
+
+    .home-section-overlay-grid-item.middle {
+        display: none;
+    }
+
+    /* 5. Ensure text aligns left inside our centered column */
+    .home-section-overlay-grid-item.left,
+    .home-section-overlay-grid-item.right {
+        text-align: left;
+        padding-top: 0;
+    }
+
+    .home-section-overlay-grid-btn {
+        width: clamp(50%, 5vw, 60%);
+        font-size: 9px;
+        align-self: center;
+        padding: 5px 0;
+    }
+
+    .home-section-overlay-grid-item.right p {
+        margin-bottom: 10px;
+
+    }
+
+    .home-section-overlay-grid-item.right p,
+    .future-event-artist-title,
+    .future-event-artist p,
+    .future-event-content-item p {
+        font-size: clamp(10px, 2vw, 25px);
+    }
+
+    .home-section-overlay-quote-part-1,
+    .home-section-overlay-quote-part-2,
+    .future-event-section-heading,
+    .future-event-artist-name {
+        font-size: clamp(24px, 1vw, 65px);
+
+    }
+
+    .future-event-section {
+        min-height: 25vh;
+        margin-left: -30px;
+        margin-right: -30px;
+    }
+
+    /* 1. Convert grid to a single column */
+    .future-event-grid {
+
+        flex-direction: column;
+        width: 75%;
+        margin: 0 15%;
+        gap: 0px;
+    }
+
+    /* 2. Tell the LEFT container to only hold the text */
+    .future-event-item.left {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 0;
+    }
+
+    /* 3. Force the image to sit after the text but before the links */
+    /* We use 'order' to re-sequence the items visually */
+    .future-event-item.right {
+
+        /* Image goes here */
+        margin: 10px 0;
+    }
+
+    /* Ensure the links move below the image */
+    .future-event-section-links {
+
+        /* Buttons go last */
+        margin-top: 10px;
+    }
+
+    /* Optional: Center the image on mobile */
+    .future-event-item.right img {
+        margin: 0 auto;
+        max-width: 100%;
+        height: auto;
+        width: 100%;
+    }
+
+    /* Cleanup spacing for mobile readability */
+    .future-event-content-item p {
+        margin-bottom: 10px;
+    }
 
 }
