@@ -1608,6 +1608,10 @@ body {
     padding-bottom: 20px;
 }
 
+.mobile-more-filters {
+    display: none;
+}
+
 /* "FILTER" LABEL */
 .filter-label {
     font-size: 14px;
@@ -1699,6 +1703,7 @@ body {
     align-items: center;
     justify-content: center;
     pointer-events: none;
+
 }
 
 /* The actual Options Menu Menu */
@@ -2695,6 +2700,149 @@ body {
         width: 36px;
         height: 36px;
         scale: 0.6;
+    }
+
+    /*===================================================================================*/
+    .events-header {
+        text-align: center;
+        font-size: clamp(25px, 1vw, 65px);
+    }
+
+    /* 1. Filters in a single scrollable row */
+    .events-filters {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        -ms-overflow-style: none;
+        /* Hide scrollbar for IE/Edge */
+        scrollbar-width: none;
+        /* Hide scrollbar for Firefox */
+        padding-bottom: 20px;
+    }
+
+    .events-filters::-webkit-scrollbar {
+        display: none;
+        /* Hide scrollbar for Chrome/Safari */
+    }
+
+    .filter-buttons {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+
+    }
+
+    /* Adjust sizing so they fit the text inside instead of a fixed width */
+    .custom-dropdown,
+    .filter-btn {
+        width: auto;
+        min-width: 80px;
+        padding: 0 5px;
+        white-space: nowrap;
+        font-size: 9px;
+
+    }
+
+    .filter-btn {
+        margin-right: 6px;
+    }
+
+    .desktop-filters {
+        display: none;
+    }
+
+    .mobile-more-filters {
+        display: block;
+    }
+
+    /* 2. Month Stacked Vertically */
+    .month-group {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .month-sidebar {
+        margin-top: 0 !important;
+        justify-content: center;
+    }
+
+    .date-block {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* 3. Events Grid & Centered First Card */
+    .events-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .event-card.featured-mobile {
+        grid-column: span 2;
+        justify-self: center;
+        /* Centers the card horizontally */
+        width: 100%;
+        max-width: 300px;
+        /* Stops it from stretching too wide */
+    }
+
+    .event-card.featured-mobile .e-image {
+        height: 220px;
+    }
+
+    .e-image {
+        width: 90%;
+        height: auto;
+
+    }
+
+    .filter-label {
+        font-size: 14px;
+        margin-right: 10px;
+    }
+
+
+
+    .date-year {
+        font-size: 18px;
+        font-weight: 300;
+
+    }
+
+    .date-month {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+
+    .e-days {
+        font-size: 7px;
+    }
+
+    .e-date {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .e-type {
+        font-size: 7px;
+
+    }
+
+
+    .e-artist {
+        font-size: 7px;
+    }
+
+    .e-name {
+        font-size: 16px;
+        margin: 0 0 10px 0;
+    }
+
+    .e-caption {
+        font-size: 7px;
+
     }
 
 }
