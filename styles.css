@@ -2225,7 +2225,6 @@ body {
         padding: 10px;
     }
 
-    .hero-carousel-section,
     .home-hero-section,
     .footer {
         display: none;
@@ -2434,5 +2433,107 @@ body {
         margin: 0;
         padding: 0;
 
+    }
+
+    /* =========================================================
+       HERO CAROUSEL MOBILE OVERRIDES
+       ========================================================= */
+
+    .hero-carousel-section {
+        /* Change from display: none to our new column layout */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        /* Let the height adjust naturally instead of locking it to 800px */
+        height: auto;
+        min-height: 100vh;
+
+        /* Offset the 10px mobile body padding to bleed edge-to-edge */
+        width: calc(100% + 20px);
+        margin-left: -10px;
+        padding: 40px 10px;
+        /* Add some breathing room top and bottom */
+    }
+
+    /* 1. HEADER TO TOP MIDDLE */
+    .hero-corner.top-left {
+        position: static;
+        /* Removes it from absolute positioning */
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .hero-corner.top-left h2 {
+        font-size: clamp(28px, 6vw, 45px);
+        /* Responsive shrink */
+        margin-top: 0;
+    }
+
+    /* 2. THE CAROUSEL BECOMES A COLUMN */
+    .carousel-container {
+        position: static;
+        height: auto;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 60px;
+        /* Space between each vertical track */
+    }
+
+    /* Override JS styles completely */
+    .carousel-item {
+        position: static;
+        transform: none !important;
+        /* Stops JS from resizing them */
+        opacity: 1 !important;
+        /* Forces all to be visible */
+        width: 100%;
+        left: auto;
+    }
+
+    /* Make all SVGs clickable, not just the center one */
+    .media-svg-btn {
+        pointer-events: auto;
+        width: 100%;
+        max-width: 250px;
+        /* Slightly smaller for mobile */
+        height: auto;
+    }
+
+    /* Force all info text to be visible */
+    .media-info {
+        position: static;
+        transform: none;
+        opacity: 1;
+        pointer-events: auto;
+        width: 90%;
+        /* Let it breathe within the screen */
+        margin-top: 20px;
+    }
+
+    /* 3. HIDE THE ARROWS */
+    .nav-btn {
+        display: none;
+    }
+
+    /* 4. BOTTOM LINKS TO BOTTOM CENTER */
+    .hero-corner.bottom-left {
+        position: static;
+        margin-top: 60px;
+        display: flex;
+        flex-direction: row;
+        /* Keep them in a row... */
+        flex-wrap: wrap;
+        /* ...but let them wrap if the screen is tiny */
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .hero-corner.bottom-left a {
+        font-size: 14px;
+        /* Shrink links slightly for mobile */
     }
 }
