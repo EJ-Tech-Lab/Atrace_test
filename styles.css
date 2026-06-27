@@ -2303,6 +2303,7 @@ body {
 
     }
 
+    /*------------------------------------------------------------------*/
     .future-event-artist p {
         font-size: clamp(13px, 2vw, 25px);
 
@@ -2325,13 +2326,15 @@ body {
 
     .future-event-content-item p {
         font-size: clamp(12px, 2vw, 25px);
+        margin: 0;
         margin-bottom: 10px;
         width: 75%;
     }
 
-    /*------------------------------------------------------------------*/
+
     .future-event-section {
-        min-height: 25vh;
+        min-height: 100vh;
+        overflow-x: hidden;
     }
 
     /* 1. Convert grid to a single column */
@@ -2365,8 +2368,9 @@ body {
 
     .future-event-section-links {
         width: 75%;
-        margin-top: 10px;
-        margin-bottom: 10px;
+        margin: 10px 0;
+        padding: 0;
+
 
     }
 
@@ -2384,8 +2388,7 @@ body {
         height: auto;
     }
 
-    .footer,
-    .future-event-item.right {
+    .footer {
         display: none;
     }
 
