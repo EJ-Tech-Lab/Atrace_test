@@ -2480,6 +2480,7 @@ body {
         margin-bottom: 50px;
         gap: 80px;
         /* Space between each stacked track */
+        overflow-x: hidden;
     }
 
     /* 4. Neutralize the JavaScript positional classes */
@@ -2545,9 +2546,13 @@ body {
         justify-content: center;
         /* Center them perfectly */
         gap: 20px;
+        padding: 0;
+        margin: 0;
     }
 
     .hero-corner.bottom-left a {
+        padding: 0;
+        margin: 0;
         font-size: 14px;
         /* Slightly smaller font for mobile */
     }
