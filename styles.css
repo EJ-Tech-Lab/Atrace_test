@@ -2442,13 +2442,14 @@ body {
     .hero-carousel-section {
         height: auto;
         /* Kills the fixed 800px height */
-        padding: 40px 10px;
+        padding: 40px 0px;
         /* Gives breathing room top and bottom */
         display: flex;
         flex-direction: column;
         align-items: center;
 
         margin: 0;
+
         /* Removes the desktop bleed offset */
         width: 100%;
         overflow-x: hidden;
