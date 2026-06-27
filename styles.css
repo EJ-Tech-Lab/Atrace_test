@@ -2438,102 +2438,117 @@ body {
     /* =========================================================
        HERO CAROUSEL MOBILE OVERRIDES
        ========================================================= */
-
+    /* 1. Reset the main section to flow normally */
     .hero-carousel-section {
-        /* Change from display: none to our new column layout */
+        height: auto;
+        /* Kills the fixed 800px height */
+        padding: 40px 10px;
+        /* Gives breathing room top and bottom */
         display: flex;
         flex-direction: column;
         align-items: center;
 
-        /* Let the height adjust naturally instead of locking it to 800px */
-        height: auto;
-        min-height: 100vh;
-
-        /* Offset the 10px mobile body padding to bleed edge-to-edge */
-        width: calc(100% + 20px);
-        margin-left: -10px;
-        padding: 40px 10px;
-        /* Add some breathing room top and bottom */
+        margin: 0;
+        /* Removes the desktop bleed offset */
+        width: 100%;
+        overflow-x: hidden;
     }
 
-    /* 1. HEADER TO TOP MIDDLE */
+    /* 2. Top Header ("EXPERIENCE THE COLLABORATION") */
     .hero-corner.top-left {
-        position: static;
-        /* Removes it from absolute positioning */
+        position: relative;
+        /* Frees it from the corner */
+        top: auto;
+        left: auto;
         text-align: center;
         margin-bottom: 50px;
     }
 
     .hero-corner.top-left h2 {
-        font-size: clamp(28px, 6vw, 45px);
-        /* Responsive shrink */
         margin-top: 0;
+        font-size: clamp(18px, 1vw, 65px);
     }
 
-    /* 2. THE CAROUSEL BECOMES A COLUMN */
+    /* 3. The Carousel Container */
     .carousel-container {
-        position: static;
-        height: auto;
-        margin: 0;
+        position: relative;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        gap: 60px;
-        /* Space between each vertical track */
-    }
-
-    /* Override JS styles completely */
-    .carousel-item {
-        position: static;
-        transform: none !important;
-        /* Stops JS from resizing them */
-        opacity: 1 !important;
-        /* Forces all to be visible */
-        width: 100%;
-        left: auto;
-    }
-
-    /* Make all SVGs clickable, not just the center one */
-    .media-svg-btn {
-        pointer-events: auto;
-        width: 100%;
-        max-width: 250px;
-        /* Slightly smaller for mobile */
+        /* Stack the items vertically */
         height: auto;
+        margin-top: 0;
+        margin-bottom: 50px;
+        gap: 80px;
+        /* Space between each stacked track */
     }
 
-    /* Force all info text to be visible */
+    /* 4. Neutralize the JavaScript positional classes */
+    /* By grouping all these JS classes, we force them to ignore the JS on mobile */
+    .carousel-item,
+    .carousel-item.pos-center,
+    .carousel-item.pos-left-1,
+    .carousel-item.pos-right-1,
+    .carousel-item.pos-left-2,
+    .carousel-item.pos-right-2,
+    .carousel-item.pos-hidden-left,
+    .carousel-item.pos-hidden-right {
+        position: relative;
+        left: auto !important;
+        top: auto !important;
+        transform: none !important;
+        /* Kills the JS scaling/translation */
+        opacity: 1 !important;
+        /* Makes everything fully visible */
+        z-index: 1;
+    }
+
+    /* 5. Force the info blocks to show permanently */
     .media-info {
-        position: static;
+        position: relative;
+        top: auto;
+        left: auto;
         transform: none;
         opacity: 1;
+        /* Reveal the hidden text */
         pointer-events: auto;
-        width: 90%;
-        /* Let it breathe within the screen */
+        width: 100%;
         margin-top: 20px;
     }
 
-    /* 3. HIDE THE ARROWS */
+    /* 6. Hide the Navigation Arrows */
     .nav-btn {
         display: none;
     }
 
-    /* 4. BOTTOM LINKS TO BOTTOM CENTER */
+    /* 7. Ensure SVG shapes are clickable and scaled well */
+    .media-svg-btn {
+        pointer-events: auto;
+        /* Ensures all SVGs can be clicked */
+        width: 100%;
+        max-width: 220px;
+        /* Shrinks the massive SVGs for small screens */
+        height: auto;
+        margin: 0 auto;
+    }
+
+    /* 8. Bottom Links (Centered Row) */
     .hero-corner.bottom-left {
-        position: static;
-        margin-top: 60px;
+        position: relative;
+        /* Frees it from the bottom left corner */
+        bottom: auto;
+        left: auto;
         display: flex;
         flex-direction: row;
-        /* Keep them in a row... */
+        /* Keep them inline */
         flex-wrap: wrap;
-        /* ...but let them wrap if the screen is tiny */
+        /* Let them wrap to the next line if screen is tiny */
         justify-content: center;
-        align-items: center;
+        /* Center them perfectly */
         gap: 20px;
     }
 
     .hero-corner.bottom-left a {
         font-size: 14px;
-        /* Shrink links slightly for mobile */
+        /* Slightly smaller font for mobile */
     }
 }
