@@ -111,13 +111,28 @@
             </div>
 
             <div class="filter-buttons" id="categoryFilters">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="concert">Concert</button>
-                <button class="filter-btn" data-filter="festival">Festival</button>
-                <button class="filter-btn" data-filter="exhibition">Exhibition</button>
-                <button class="filter-btn" data-filter="shows">Shows</button>
-                <button class="filter-btn" data-filter="talks">Talks</button>
-                <button class="filter-btn" data-filter="sound-art">Sound Art</button>
+                <button class="filter-btn active main-filter" data-filter="all">All</button>
+
+                <div class="desktop-filters">
+                    <button class="filter-btn" data-filter="concert">Concert</button>
+                    <button class="filter-btn" data-filter="festival">Festival</button>
+                    <button class="filter-btn" data-filter="exhibition">Exhibition</button>
+                    <button class="filter-btn" data-filter="shows">Shows</button>
+                    <button class="filter-btn" data-filter="talks">Talks</button>
+                    <button class="filter-btn" data-filter="sound-art">Sound Art</button>
+                </div>
+
+                <div class="custom-dropdown mobile-more-filters" id="moreFiltersDropdown">
+                    <div class="dropdown-trigger">More</div>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-option" data-value="concert">Concert</div>
+                        <div class="dropdown-option" data-value="festival">Festival</div>
+                        <div class="dropdown-option" data-value="exhibition">Exhibition</div>
+                        <div class="dropdown-option" data-value="shows">Shows</div>
+                        <div class="dropdown-option" data-value="talks">Talks</div>
+                        <div class="dropdown-option" data-value="sound-art">Sound Art</div>
+                    </div>
+                </div>
             </div>
         </div>
 
