@@ -1247,6 +1247,11 @@ body {
 }
 
 /* VISIT EVENTS BUTTON */
+
+.artist-mobile {
+    display: none;
+}
+
 .art-info-btn {
     width: 100%;
     padding: 14px 0;
@@ -2925,7 +2930,7 @@ body {
         min-height: 25vh;
         overflow-x: hidden;
 
-        width: 75%;
+
         padding: 0 20%;
         margin: 0
     }
@@ -2956,15 +2961,35 @@ body {
         gap: 0px;
     }
 
+    .life-content-item {
+        width: 75%;
+        margin: 0;
+        padding: 0;
+    }
+
     .life-content-item p {
         margin: 0;
         font-size: clamp(11px, 2vw, 25px);
         text-align: left;
+        margin-bottom: 10px;
     }
 
     .life-section-links {
         display: none;
     }
 
+    .artist-mobile {
+        display: flex;
+        align-self: center;
+        margin-top: 10px;
+        padding: 0 20%;
+    }
+
+    .art-info-btn {
+
+        font-size: 9px;
+        width: clamp(40%, 5vw, 60%);
+        padding: 3px 10%;
+    }
 
 }
