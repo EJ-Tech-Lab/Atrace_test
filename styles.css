@@ -2980,7 +2980,7 @@ body {
 
     .artist-mobile {
         display: flex;
-        align-self: center;
+
         margin-top: 10px;
         padding: 0 20%;
     }
@@ -2990,6 +2990,7 @@ body {
         font-size: 9px;
         width: clamp(40%, 5vw, 60%);
         padding: 3px 10%;
+        align-self: center;
     }
 
 }
