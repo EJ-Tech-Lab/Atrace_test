@@ -1539,6 +1539,33 @@ body {
     margin-bottom: 120px;
 }
 
+.mobile-only {
+    display: none;
+}
+
+.artist-gallery-section-heading {
+    margin-bottom: 60px;
+}
+
+.artist-gallery-artist-name,
+.artist-gallery-artist-title {
+    margin: 0;
+    line-height: 1;
+}
+
+
+.artist-gallery-artist-name {
+    font-size: 45px;
+    font-weight: 300;
+}
+
+
+.artist-gallery-artist-title {
+    font-size: 45px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
 .artist-gallery-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -2919,8 +2946,7 @@ body {
 
     .trace-line,
     .artist-work,
-    .artistwork-info-section,
-    .artist-gallery-section {
+    .artistwork-info-section {
         display: none;
     }
 
@@ -2932,7 +2958,8 @@ body {
 
 
         padding: 0 20%;
-        margin: 0
+        margin: 0;
+        margin-bottom: 50px;
     }
 
     .life-section-heading {
@@ -2959,6 +2986,7 @@ body {
         flex-direction: column;
         width: 100%;
         gap: 0px;
+        margin: 0;
     }
 
     .life-content-item {
@@ -2980,7 +3008,7 @@ body {
 
     .artist-mobile {
         display: flex;
-
+        margin-bottom: 0;
         margin-top: 10px;
         padding: 0 20%;
     }
@@ -2991,6 +3019,104 @@ body {
         width: clamp(40%, 5vw, 60%);
         padding: 3px 10%;
         align-self: center;
+
+    }
+
+    /*-----------------------------------------*/
+    .artist-gallery-section {
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+        margin-bottom: 50px;
+    }
+
+    .artist-gallery-section-heading {
+        display: none;
+    }
+
+    .artist-gallery-grid {
+        display: none !important;
+        /* Kill the 3x3 grid on mobile */
+    }
+
+    .mobile-gallery-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+        margin-top: 0px;
+    }
+
+    /* The Main Feature Box */
+    .main-image-container {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        overflow: hidden;
+        background: transparent;
+        margin: 0;
+    }
+
+    .main-image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transition: opacity 0.2s ease;
+        /* For smooth transitions */
+        margin-top: 0;
+    }
+
+
+    .prev-arrow {
+        left: 10px;
+        background: transparent;
+        border: none;
+    }
+
+    .next-arrow {
+        right: 10px;
+        background: transparent;
+        border: none;
+    }
+
+    /* The Scrollable Row of 9 */
+    .thumbnail-strip {
+        display: flex;
+        gap: 12px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        /* Smooth iOS scrolling */
+        padding-bottom: 10px;
+        scrollbar-width: none;
+        /* Hides scrollbar in Firefox */
+    }
+
+    /* Hides scrollbar in Chrome/Safari */
+    .thumbnail-strip::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Individual Thumbnails */
+    .thumb-item {
+        flex: 0 0 80px;
+        /* Forces boxes to be 80x80px */
+        height: 80px;
+        cursor: pointer;
+        opacity: 0.4;
+        border: 1px solid transparent;
+        transition: all 0.3s ease;
+    }
+
+    /* The Selected Thumbnail */
+    .thumb-item.active {
+        opacity: 1;
+        border-color: #5DE62C;
+    }
+
+    .thumb-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 
 }
