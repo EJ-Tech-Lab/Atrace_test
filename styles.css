@@ -2850,6 +2850,7 @@ body {
 
 
     .artist-hero {
+        height: 50vh;
         width: 100%;
         margin: 0px 0;
         overflow: hidden;
@@ -2861,12 +2862,11 @@ body {
     }
 
     .artist-overlay {
-        position: absolute;
-        inset: 0;
-        padding: 40px;
-        display: flex;
-        align-items: flex-end;
+
+        padding: 0px;
+
         padding-bottom: 30px;
+
     }
 
     .art-info-grid {
@@ -2913,10 +2913,58 @@ body {
 
 
     .trace-line,
-    .artist-life-section,
     .artist-work,
     .artistwork-info-section,
     .artist-gallery-section {
         display: none;
     }
+
+    /*------------------------------------*/
+
+    .artist-life-section {
+        min-height: 25vh;
+        overflow-x: hidden;
+
+        width: 75%;
+        padding: 0 20%;
+        margin: 0
+    }
+
+    .life-section-heading {
+        margin-bottom: 30px;
+        margin-top: 50px;
+    }
+
+    .life-artist-name,
+    .life-artist-title {
+        font-size: clamp(14px, 2vw, 25px);
+        margin: 0;
+        padding: 0;
+    }
+
+    .birth p {
+        font-size: clamp(13px, 2vw, 25px);
+
+
+    }
+
+    .life-content-grid {
+
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 0px;
+    }
+
+    .life-content-item p {
+        margin: 0;
+        font-size: clamp(11px, 2vw, 25px);
+        text-align: left;
+    }
+
+    .life-section-links {
+        display: none;
+    }
+
+
 }
