@@ -2846,4 +2846,77 @@ body {
 
     }
 
+    /*=========================================================================================*/
+
+
+    .artist-hero {
+        width: 100%;
+        margin: 0px 0;
+        overflow: hidden;
+    }
+
+    .artist-bg {
+        width: 100%;
+        height: 50vh;
+    }
+
+    .artist-overlay {
+        position: absolute;
+        inset: 0;
+        padding: 40px;
+        display: flex;
+        align-items: flex-end;
+        padding-bottom: 30px;
+    }
+
+    .art-info-grid {
+        display: flex;
+        flex-direction: column;
+        width: 75%;
+        padding: 0 20%;
+        gap: 0px;
+    }
+
+    .art-info-item.right {
+        display: none;
+    }
+
+    .art-info-item.left {
+        overflow: hidden;
+    }
+
+    .artist-name,
+    .artist-title {
+        font-size: clamp(24px, 1vw, 65px);
+        margin: 0;
+    }
+
+    .artist-nav {
+        width: 80px;
+        height: 80px;
+
+    }
+
+    .artist-nav svg {
+        width: 80px;
+        height: 80px;
+    }
+
+    /* ARROW POSITION */
+    .artist-nav-left {
+        left: 0px;
+    }
+
+    .artist-nav-right {
+        right: 0px;
+    }
+
+
+    .trace-line,
+    .artist-life-section,
+    .artist-work,
+    .artistwork-info-section,
+    .artist-gallery-section {
+        display: none;
+    }
 }
