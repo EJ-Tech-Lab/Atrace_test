@@ -3197,4 +3197,113 @@ body {
     .artistwork-overlay {
         display: none;
     }
+
+    /*========================================================*/
+    .artists-header {
+        font-size: clamp(25px, 6vw, 40px);
+        text-align: center;
+    }
+
+    /* Scrollable Filter Row */
+    .artists-filters {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        -ms-overflow-style: none;
+        /* Hide scrollbar for IE/Edge */
+        scrollbar-width: none;
+        /* Hide scrollbar for Firefox */
+        padding-bottom: 20px;
+    }
+
+    .artists-filters::-webkit-scrollbar {
+        display: none;
+        /* Chrome/Safari */
+    }
+
+    .filter-buttons {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+    }
+
+    /* Filter UI visibility toggles */
+    .desktop-filters {
+        display: none;
+    }
+
+    .mobile-more-filters {
+        display: block;
+    }
+
+
+
+    /* Dismantle desktop structural spacing */
+    .artist-group {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .artist-sidebar {
+        display: none;
+    }
+
+    /* 2-Column Grid Setup */
+    .artists-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        row-gap: 50px;
+    }
+
+    /* Card Mobile Redesign */
+    .artist-card {
+        flex-direction: row;
+        /* Stack line above image on tight grids */
+        gap: 15px;
+    }
+
+    .artist-line {
+        width: 2px;
+        height: auto;
+        /* Horizontal line on mobile instead of vertical */
+    }
+
+
+    /* Featured (First) Card Layout */
+    .artist-card.featured-mobile {
+        grid-column: span 2;
+        justify-self: center;
+        /* Centers the card horizontally */
+        width: 100%;
+        max-width: 300px;
+        /* Stops it from stretching too wide */
+    }
+
+    .artist-card.featured-mobile .a-name {
+        font-size: 26px;
+    }
+
+    .artist-card.featured-mobile .a-image {
+        height: 220px;
+    }
+
+
+    .a-type {
+        font-size: 7px;
+
+    }
+
+
+    .a-name {
+        font-size: 16px;
+        margin: 0 0 10px 0;
+    }
+
+    .a-caption {
+        font-size: 7px;
+
+    }
+
+
 }
