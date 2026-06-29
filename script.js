@@ -228,28 +228,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
     applyFilters();
 });
-
-// --- ARTISTS PAGE LOGIC ---
+//artists
 document.addEventListener("DOMContentLoaded", () => {
     const artistGroup = document.querySelector(".artist-group");
-    if (!artistGroup) return; // Guard: Stop if not on the Artists page
+    if (!artistGroup) return; // Guard clause
 
     const categoryButtons = document.querySelectorAll(".filter-btn");
     const sidebar = document.querySelector(".artist-sidebar");
-    const artistsGrid = document.querySelector(".artists-grid");
     const artistCards = document.querySelectorAll(".artist-card");
+
+    // More Dropdown Variables
+    const moreDropdown = document.getElementById("moreFiltersDropdown");
+    let moreTrigger, moreOptions;
+
+    if (moreDropdown) {
+        moreTrigger = moreDropdown.querySelector(".dropdown-trigger");
+        moreOptions = moreDropdown.querySelectorAll(".dropdown-option");
+    }
 
     let activeCategory = "all";
 
     function positionSidebars() {
+        if (window.innerWidth <= 850) {
+            if (sidebar) sidebar.style.marginTop = "0px";
+            return;
+        }
+
         requestAnimationFrame(() => {
             if (artistGroup.style.display === "none") return;
-
             const visibleCards = Array.from(artistCards).filter(card => card.style.display !== "none");
             if (visibleCards.length === 0) return;
 
             sidebar.style.marginTop = "0px";
-
             let firstRowMaxHeight = 0;
             const itemsInFirstRow = Math.min(visibleCards.length, 3);
 
@@ -262,44 +272,101 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const sidebarHeight = sidebar.offsetHeight;
             const targetOffset = (firstRowMaxHeight - sidebarHeight) / 2;
-
             sidebar.style.marginTop = `${Math.max(0, targetOffset)}px`;
         });
     }
 
     function applyFilters() {
         let hasVisibleArtists = false;
+        let firstVisibleFound = false;
 
         artistCards.forEach(card => {
             const artistCategory = card.getAttribute("data-category");
             const matchesCategory = activeCategory === "all" || artistCategory === activeCategory;
 
+            // Reset featured class
+            card.classList.remove("featured-mobile");
+
             if (matchesCategory) {
                 card.style.display = "flex";
                 hasVisibleArtists = true;
+
+                // Make the very first matched card the featured card on mobile
+                if (!firstVisibleFound && window.innerWidth <= 850) {
+                    card.classList.add("featured-mobile");
+                    firstVisibleFound = true;
+                }
             } else {
                 card.style.display = "none";
             }
         });
 
+        // Ensure proper display mode based on viewport
         if (hasVisibleArtists) {
-            artistGroup.style.display = "grid";
+            artistGroup.style.display = window.innerWidth <= 850 ? "flex" : "grid";
         } else {
             artistGroup.style.display = "none";
         }
+
         positionSidebars();
     }
 
+    // --- Dropdown Logic ---
+    if (moreDropdown) {
+        moreTrigger.addEventListener("click", (e) => {
+            e.stopPropagation();
+            moreDropdown.classList.toggle("open");
+        });
+
+        moreOptions.forEach(option => {
+            option.addEventListener("click", () => {
+                // Manage visual states
+                moreOptions.forEach(opt => opt.classList.remove("active"));
+                option.classList.add("active");
+                moreTrigger.textContent = option.textContent;
+
+                // Update filter state
+                activeCategory = option.getAttribute("data-value");
+
+                // Clear standard buttons
+                categoryButtons.forEach(b => b.classList.remove("active"));
+
+                moreDropdown.classList.remove("open");
+                applyFilters();
+            });
+        });
+
+        // Close on outside click
+        document.addEventListener("click", (e) => {
+            if (!moreDropdown.contains(e.target)) {
+                moreDropdown.classList.remove("open");
+            }
+        });
+    }
+
+    // --- Standard Button Logic ---
     categoryButtons.forEach(btn => {
         btn.addEventListener("click", (e) => {
+            // Prevent firing if clicking a button inside a dropdown (if markup ever changes)
+            if (e.target.closest('.dropdown-menu')) return;
+
             categoryButtons.forEach(b => b.classList.remove("active"));
             e.target.classList.add("active");
             activeCategory = e.target.getAttribute("data-filter");
+
+            // Reset dropdown state
+            if (moreDropdown) {
+                moreOptions.forEach(opt => opt.classList.remove("active"));
+                moreTrigger.textContent = "More";
+            }
+
             applyFilters();
         });
     });
 
-    window.addEventListener("resize", positionSidebars);
+    window.addEventListener("resize", applyFilters);
+
+    // Initialize
     applyFilters();
 });
 
