@@ -2167,7 +2167,7 @@ body {
     right: -150%;
     /* Hidden off-screen initially */
     width: 90vw;
-    height: 100vh;
+    height: 95vh;
     background-color: #000000;
     /* Assuming a dark theme, change if needed */
     z-index: 9999;
