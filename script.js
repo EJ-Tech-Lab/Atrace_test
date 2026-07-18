@@ -388,41 +388,41 @@ if (burgerBtn && closeBtn && mobileSidebar) {
     });
 }
 document.addEventListener("DOMContentLoaded", () => {
-    const mobileWrapper = document.querySelector('.mobile-gallery-wrapper');
+    // 1. Grab EVERY gallery wrapper on the page
+    const allGalleries = document.querySelectorAll('.mobile-gallery-wrapper');
 
-    // Only run this script if the mobile gallery exists on the page
-    if (mobileWrapper) {
-        const mainImg = document.getElementById('mainGalleryImage');
-        const thumbs = document.querySelectorAll('.thumb-item');
-        const prevBtn = document.querySelector('.prev-arrow');
-        const nextBtn = document.querySelector('.next-arrow');
+    // 2. Loop through each one to give it independent logic
+    allGalleries.forEach((wrapper) => {
+
+        // Scope our queries ONLY to the current wrapper we are looping through
+        const mainImg = wrapper.querySelector('.main-gallery-image');
+        const thumbs = wrapper.querySelectorAll('.thumb-item');
+        const prevBtn = wrapper.querySelector('.prev-arrow');
+        const nextBtn = wrapper.querySelector('.next-arrow');
+
+        // Safety check: if this wrapper is missing elements, skip it
+        if (!mainImg || thumbs.length === 0) return;
 
         let currentIndex = 0;
         const maxIndex = thumbs.length - 1;
 
-        // Extract all image paths dynamically so we don't have to hardcode them in JS
+        // Extract image paths dynamically for this specific gallery
         const imageSources = Array.from(thumbs).map(t => t.querySelector('img').src);
 
-        // Core Update Function
         function updateGallery(index) {
-            // Loop around if we go past the start or end
             if (index < 0) index = maxIndex;
             if (index > maxIndex) index = 0;
-
             currentIndex = index;
 
-            // Fade out, swap image, fade in
             mainImg.style.opacity = "0.5";
             setTimeout(() => {
                 mainImg.src = imageSources[currentIndex];
                 mainImg.style.opacity = "1";
             }, 150);
 
-            // Update border highlights
             thumbs.forEach(t => t.classList.remove('active'));
             thumbs[currentIndex].classList.add('active');
 
-            // Magic touch: Automatically scroll the strip so the active thumb stays in view
             thumbs[currentIndex].scrollIntoView({
                 behavior: 'smooth',
                 block: 'nearest',
@@ -430,40 +430,33 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
 
-        // 1. Thumbnail Clicks
+        // Thumbnails Click
         thumbs.forEach((thumb, index) => {
             thumb.addEventListener('click', () => updateGallery(index));
         });
 
-        // 2. Arrow Clicks
-        prevBtn.addEventListener('click', () => updateGallery(currentIndex - 1));
-        nextBtn.addEventListener('click', () => updateGallery(currentIndex + 1));
+        // Arrow Clicks
+        if (prevBtn) prevBtn.addEventListener('click', () => updateGallery(currentIndex - 1));
+        if (nextBtn) nextBtn.addEventListener('click', () => updateGallery(currentIndex + 1));
 
-        // 3. Swipe Detection Mechanics
+        // Swipe Mechanics
         let touchStartX = 0;
         let touchEndX = 0;
-        const swipeThreshold = 50; // You must swipe at least 50px for it to register
+        const swipeThreshold = 50;
 
-        // Note: { passive: true } is great for performance on mobile devices
         mainImg.addEventListener('touchstart', e => {
             touchStartX = e.changedTouches[0].screenX;
         }, { passive: true });
 
         mainImg.addEventListener('touchend', e => {
             touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        }, { passive: true });
-
-        function handleSwipe() {
             const swipeDistance = touchEndX - touchStartX;
 
             if (swipeDistance < -swipeThreshold) {
-                // Swiped Left (Go to Next)
-                updateGallery(currentIndex + 1);
+                updateGallery(currentIndex + 1); // Swiped Left
             } else if (swipeDistance > swipeThreshold) {
-                // Swiped Right (Go to Previous)
-                updateGallery(currentIndex - 1);
+                updateGallery(currentIndex - 1); // Swiped Right
             }
-        }
-    }
+        }, { passive: true });
+    });
 });
